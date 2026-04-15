@@ -1,0 +1,33 @@
+
+
+
+	
+	
+	
+	
+
+	
+	11 municipios se suman al sistema de medición de energía del Centro Nacional de Monitoreo - Instituto de Planificación y Promoción de Soluciones Energéticas para Las Zonas No Interconectadas -IPSE
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://ipse.gov.co/blog/2025/03/04/11-municipios-se-suman-al-sistema-de-medicion-de-energia-del-centro-nacional-de-monitoreo/#article","isPartOf":{"@id":"https://ipse.gov.co/blog/2025/03/04/11-municipios-se-suman-al-sistema-de-medicion-de-energia-del-centro-nacional-de-monitoreo/"},"author":{"name":"admin","@id":"https://ipse.gov.co/#/schema/person/445cc538cfa4ede50e3d9a85c69064f9"},"headline":"11 municipios se suman al sistema de medición de energía del Centro Nacional de Monitoreo","datePublished":"2025-03-04T17:33:28+00:00","dateModified":"2025-03-04T18:00:36+00:00","mainEntityOfPage":{"@id":"https://ipse.gov.co/blog/2025/03/04/11-municipios-se-suman-al-sistema-de-medicion-de-energia-del-centro-nacional-de-monitoreo/"},"wordCount":461,"publisher":{"@id":"https://ipse.gov.co/#organization"},"image":{"@id":"https://ipse.gov.co/blog/2025/03/04/11-municipios-se-suman-al-sistema-de-medicion-de-energia-del-centro-nacional-de-monitoreo/#primaryimage"},"thumbnailUrl":"https://ipse.gov.co/wp-content/uploads/2024/05/informe-de-telemetria-background-1.jpg","articleSection":["Informes CNM","Noticias General","Ultimas Noticias"],"inLanguage":"es"},{"@type":"WebPage","@id":"https://ipse.gov.co/blog/2025/03/04/11-municipios-se-suman-al-sistema-de-medicion-de-energia-del-centro-nacional-de-monitoreo/","url":"https://ipse.gov.co/blog/2025/03/04/11-municipios-se-suman-al-sistema-de-medicion-de-energia-del-centro-nacional-de-monitoreo/","name":"11 municipios se suman al sistema de medición de energía del Centro Nacional de Monitoreo - Instituto de Planificación y Promoción de Soluciones Energéticas para Las Zonas No Interconectadas -IPSE","isPartOf":{"@id":"https://ipse.gov.co/#website"},"primaryImageOfPage":{"@id":"https://ipse.gov.co/blog/2025/03/04/11-municipios-se-suman-al-sistema-de-medicion-de-energia-del-centro-nacional-de-monitoreo/#primaryimage"},"image":{"@id":"https://ipse.gov.co/blog/2025/03/04/11-municipios-se-suman-al-sistema-de-medicion-de-energia-del-centro-nacional-de-monitoreo/#primaryimage"},"thumbnailUrl":"https://ipse.gov.co/wp-content/uploads/2024/05/informe-de-telemetria-background-1.jpg","datePublished":"2025-03-04T17:33:28+00:00","d

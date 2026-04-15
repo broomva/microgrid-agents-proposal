@@ -1,0 +1,33 @@
+
+
+
+	
+	
+	
+	
+
+	
+	Columna No 1: Inteligencia Artificial y Energías Renovables, Una oportunidad para las Zonas No Interconectadas de Colombia - Instituto de Planificación y Promoción de Soluciones Energéticas para Las Zonas No Interconectadas -IPSE
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://ipse.gov.co/blog/2025/05/12/inteligencia-artificial-y-energias-renovables-una-oportunidad-para-las-zonas-no-interconectadas-de-colombia/#article","isPartOf":{"@id":"https://ipse.gov.co/blog/2025/05/12/inteligencia-artificial-y-energias-renovables-una-oportunidad-para-las-zonas-no-interconectadas-de-colombia/"},"author":{"name":"admin","@id":"https://ipse.gov.co/#/schema/person/445cc538cfa4ede50e3d9a85c69064f9"},"headline":"Columna No 1: Inteligencia Artificial y Energías Renovables, Una oportunidad para las Zonas No Interconectadas de Colombia","datePublished":"2025-05-13T03:56:28+00:00","dateModified":"2026-03-24T21:09:09+00:00","mainEntityOfPage":{"@id":"https://ipse.gov.co/blog/2025/05/12/inteligencia-artificial-y-energias-renovables-una-oportunidad-para-las-zonas-no-interconectadas-de-colombia/"},"wordCount":1150,"publisher":{"@id":"https://ipse.gov.co/#organization"},"image":{"@id":"https://ipse.gov.co/blog/2025/05/12/inteligencia-artificial-y-energias-renovables-una-oportunidad-para-las-zonas-no-interconectadas-de-colombia/#primaryimage"},"thumbnailUrl":"https://ipse.gov.co/wp-content/uploads/2025/05/foto-director-del-ipse-danny-ramirez1.jpg","articleSection":["Columna del director","Ultimas Noticias"],"inLanguage":"es"},{"@type":"WebPage","@id":"https://ipse.gov.co/blog/2025/05/12/inteligencia-artificial-y-energias-renovables-una-oportunidad-para-las-zonas-no-interconectadas-de-colombia/","url":"https://ipse.gov.co/blog/2025/05/12/inteligencia-artificial-y-energias-renovables-una-oportunidad-para-las-zonas-no-interconectadas-de-colombia/","name":"Columna No 1: Inteligencia Artificial y Energías Renovables, Una oportunidad para las Zonas No Interconectadas de Colombia - Instituto de Planificación y Promoción de Soluciones Energéticas para Las Zonas No Interconectadas -IPSE","isPartOf":{"@id":"https://ipse.gov.co/#website"},"primaryImageOfPage":{"@id":"https://ipse.gov.co/blog/2025/05/12/inteligencia-artificial-y-energias-renovables-una-oportunidad-para-las-zonas-no-interconectadas-de

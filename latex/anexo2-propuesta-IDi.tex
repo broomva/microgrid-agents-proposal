@@ -1,0 +1,747 @@
+% =============================================================================
+% ANEXO 2 — DOCUMENTO TÉCNICO DE LA PROPUESTA DE I+D+i
+% Convocatoria 975 "Becas para el Cambio" — Minciencias
+% Compiled with pdflatex (UTF-8)
+% =============================================================================
+\documentclass[12pt,letterpaper]{article}
+
+% --- Encoding and fonts ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+% --- Language ---
+\usepackage[spanish]{babel}
+
+% --- Page geometry ---
+\usepackage[margin=2.5cm]{geometry}
+
+% --- Headers and footers ---
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textit{Anexo 2 --- Propuesta de I+D+i}}
+\fancyhead[R]{\small\textit{Convocatoria 975}}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% --- Hyperlinks ---
+\usepackage[colorlinks=true,linkcolor=blue!70!black,citecolor=blue!70!black,urlcolor=blue!70!black]{hyperref}
+\usepackage{xurl} % Better URL line breaking
+
+% --- Tables ---
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+
+% --- Lists ---
+\usepackage{enumitem}
+
+% --- Paragraph spacing ---
+\usepackage{parskip}
+
+% --- Section formatting ---
+\usepackage{titlesec}
+\setcounter{secnumdepth}{3}
+
+% --- Colors ---
+\usepackage{xcolor}
+
+% --- Micro-typography (optional, improves line breaking in Spanish) ---
+\usepackage{microtype}
+
+% --- Fix long URLs breaking ---
+\usepackage{url}
+\urlstyle{same}
+
+% =============================================================================
+% DOCUMENT
+% =============================================================================
+\begin{document}
+
+% -------------------------------------------------------------------------
+% TITLE PAGE
+% -------------------------------------------------------------------------
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+
+{\Large\bfseries ANEXO 2}\\[0.8cm]
+{\large DOCUMENTO T\'ECNICO DE LA PROPUESTA DE\\
+INVESTIGACI\'ON, DESARROLLO TECNOL\'OGICO Y/O INNOVACI\'ON}\\[1.5cm]
+
+{\normalsize Convocatoria ``Becas para el Cambio'' --- Formaci\'on en Maestr\'ias y Doctorados}\\[0.3cm]
+{\normalsize \textbf{Modalidad 1: Maestr\'ia Nacional}}\\[2.5cm]
+
+{\LARGE\bfseries De Microrredes a Infraestructura Aut\'onoma: Un Sistema Operativo de Agentes para la Transici\'on Energ\'etica en Zonas Remotas de Colombia}\\[3cm]
+
+{\large Carlos D. Escobar-Valbuena}\\[0.5cm]
+{\normalsize Universidad de los Andes}\\
+{\normalsize Maestr\'ia en Inteligencia Artificial (MAIA)}\\[2cm]
+
+{\normalsize Abril 2026}
+
+\vfill
+\end{titlepage}
+
+% -------------------------------------------------------------------------
+% TABLE OF CONTENTS
+% -------------------------------------------------------------------------
+\tableofcontents
+\clearpage
+
+% =========================================================================
+\section{T\'itulo de la propuesta}
+% =========================================================================
+
+\textbf{De Microrredes a Infraestructura Aut\'onoma: Un Sistema Operativo de Agentes para la Transici\'on Energ\'etica en Zonas Remotas de Colombia}
+
+% =========================================================================
+\section{Resumen ejecutivo}
+% =========================================================================
+
+Esta propuesta investiga dos preguntas escalonadas. Primero: \textquestiondown puede un agente aut\'onomo persistente, regulado y desplegado en el borde computacional gobernar una microrred como infraestructura f\'isica cr\'itica? Segundo: cuando m\'ultiples agentes operan microrredes en una misma regi\'on, \textquestiondown emerge coordinaci\'on cooperativa que un agente individual no puede lograr? Las microrredes renovables en las Zonas No Interconectadas (ZNI) de Colombia proveen las restricciones de dise\~no m\'as exigentes: 1.664 localidades donde 1,9 millones de personas sobreviven con menos de 6 horas diarias de electricidad generada en un 78\% por di\'esel (IPSE, 2025; OCDE, 2023), con datos escasos, conectividad intermitente y consecuencias humanas inmediatas cuando las decisiones fallan.
+
+Colombia invierte \$349.375 miles de millones COP en infraestructura renovable para las ZNI, pero el hardware sin inteligencia fracasa silenciosamente: plantas solares en Puerto Nari\~no (COP \$30.000 millones) llevan ocho a\~nos sin generar un kWh; proyectos en La Guajira (COP \$43.000 millones) no mostraban paneles un a\~no despu\'es del contrato (Portafolio, 2023; Vor\'agine, 2024). El 88\% de las localidades ZNI se monitorean mediante llamadas telef\'onicas (IPSE, 2025). La primera capacidad que se necesita no es optimizaci\'on --- es observabilidad.
+
+La propuesta plantea cuatro capas de inteligencia ag\'entica acumulativas: \textit{observabilidad} (detecci\'on de anomal\'ias y monitoreo continuo), \textit{predicci\'on} (modelos Transformer ligeros que reducen el ciclado innecesario de bater\'ias mediante despacho consciente de degradaci\'on; Ouedraogo et al., 2021), \textit{optimizaci\'on} (despacho multi-objetivo con mejoras estimadas del 25-40\% sobre l\'ineas base sin controlador), y \textit{coordinaci\'on de flota} (aprendizaje federado personalizado que reduce costos y acelera despliegues en sitios nuevos; Yang et al., 2025).
+
+La pregunta de investigaci\'on opera en dos niveles. Aplicado: \textquestiondown cu\'anta inteligencia sobrevive la transferencia desde microrredes industriales con datos abundantes hacia ZNI con datos escasos? Fundamental: \textquestiondown puede un agente persistente y regulado operar como capa de decisi\'on acotada y trazable sobre infraestructura cr\'itica?
+
+La arquitectura separa inteligencia y protecci\'on: la seguridad el\'ectrica permanece en rel\'es y controladores dedicados; el agente opera por encima como capa supervisada y degradable. Si falla, la microrred vuelve a su comportamiento base. El agente se distingue por cuatro propiedades: \textit{persistencia} event-sourced, \textit{regulaci\'on homeost\'atica} (Mineault et al., 2024; Eslami \& Yu, 2026), \textit{situatedness} (ejecuta en hardware alimentado por la microrred que gestiona), y \textit{degradaci\'on segura}. La comunicaci\'on inter-agente utiliza protocolos federados que operan bajo conectividad intermitente.
+
+La contribuci\'on de las ZNI es epist\'emica: proveen un banco de pruebas adversarial para la autonom\'ia ag\'entica donde la infraestructura cr\'itica impone consecuencias irreversibles, recursos restringidos y requisitos de seguridad. Si esta arquitectura opera de forma segura en estas condiciones, se convierte en base validada para infraestructura aut\'onoma en otros dominios remotos. El proyecto se enmarca en la Maestr\'ia en Inteligencia Artificial (MAIA) de la Universidad de los Andes, se articula con el grupo TICSw (A1, Minciencias) y se alinea con la Misi\'on de Transici\'on Energ\'etica de las PIIOM.
+
+% =========================================================================
+\section{Palabras clave}
+% =========================================================================
+
+\begin{enumerate}
+\item Autonom\'ia ag\'entica para infraestructura cr\'itica
+\item Sistemas operativos de agentes (Agent OS)
+\item Microrredes de energ\'ia renovable en borde computacional
+\item Adaptaci\'on de dominio para sistemas energ\'eticos
+\item Regulaci\'on homeost\'atica de agentes aut\'onomos
+\end{enumerate}
+
+% =========================================================================
+\section{Articulaci\'on con las PIIOM}
+% =========================================================================
+
+La presente propuesta se articula directamente con la \textbf{Misi\'on 3: Transici\'on Energ\'etica --- Energ\'ia sostenible, eficiente y asequible}, cuyo objetivo es ``garantizar el acceso y uso de energ\'ias seguras y sostenibles para todos los colombianos, a trav\'es del desarrollo, adopci\'on y adaptaci\'on de tecnolog\'ias para la transici\'on energ\'etica'' (Resoluci\'on 1452 de 2024, Minciencias).
+
+La articulaci\'on se manifiesta en tres dimensiones:
+
+\subsection*{Dimensi\'on tecnol\'ogica}
+
+La propuesta desarrolla tecnolog\'ia de inteligencia artificial aplicada directamente a la operaci\'on de sistemas de energ\'ia renovable. Los sistemas multi-agente propuestos constituyen una innovaci\'on en la forma de gestionar infraestructura energ\'etica distribuida, transitando de un modelo centralizado y dependiente de operaci\'on humana hacia un modelo aut\'onomo y coordinado. Esto responde al mandato de la misi\'on de ``desarrollo, adopci\'on y adaptaci\'on de tecnolog\'ias para la transici\'on energ\'etica.''
+
+\subsection*{Dimensi\'on territorial y de justicia social}
+
+Al enfocarse en las Zonas No Interconectadas --- territorios hist\'oricamente excluidos del sistema el\'ectrico nacional --- la propuesta aborda la brecha de acceso energ\'etico como un problema de justicia social y convergencia regional. Esto se alinea con el Plan Nacional de Desarrollo 2022-2026 ``Colombia Potencia Mundial de la Vida'' (Ley 2294 de 2023) y con el marco normativo de comunidades energ\'eticas (Decreto 2236 de 2023, CREG Resoluci\'on 101\,072 de 2025).
+
+\subsection*{Dimensi\'on de apropiaci\'on social del conocimiento}
+
+La propuesta integra la construcci\'on de grafos de conocimiento que capturan saberes territoriales y condiciones locales, permitiendo que el sistema responda a la realidad de cada comunidad. Los talleres de apropiaci\'on social previstos buscan que las comunidades no sean solo beneficiarias pasivas, sino co-constructoras del conocimiento que alimenta los agentes inteligentes.
+
+\subsection*{Dimensi\'on de competitividad industrial y reindustrializaci\'on}
+
+La Misi\'on 3 incluye entre sus objetivos ``impulsar los procesos de reindustrializaci\'on y transici\'on energ\'etica'' (Resoluci\'on 1452 de 2024). La propuesta contribuye al desarrollar tecnolog\'ia de IA transferible entre contextos industriales y comunitarios, aline\'andose con el CONPES 4129 (Pol\'itica Nacional de Reindustrializaci\'on) y el convenio Ecopetrol-Minciencias para CTeI en transici\'on energ\'etica.
+
+\medskip
+
+Adicionalmente, la propuesta presenta conexiones con la \textbf{Misi\'on 1: Bioeconom\'ia y territorio}, en la medida en que la electrificaci\'on sostenible de zonas rurales es condici\'on habilitante para el desarrollo territorial sostenible y las cadenas de valor de la bioeconom\'ia.
+
+% =========================================================================
+\section{Articulaci\'on de actores de CTeI}
+% =========================================================================
+
+La propuesta contempla la articulaci\'on de los siguientes actores del Sistema Nacional de Ciencia, Tecnolog\'ia e Innovaci\'on (SNCTeI):
+
+\subsection*{1. Grupo de Investigaci\'on TICSw --- Tecnolog\'ias de Informaci\'on y Construcci\'on de Software (Clasificaci\'on A1, Minciencias)}
+
+Grupo de investigaci\'on adscrito al Departamento de Ingenier\'ia de Sistemas y Computaci\'on de la Universidad de los Andes. Clasificado en la categor\'ia A1 (m\'axima clasificaci\'on) por Minciencias. El grupo aporta la capacidad investigativa en inteligencia artificial, sistemas multi-agente, grafos de conocimiento y procesamiento de lenguaje natural. La l\'inea de investigaci\'on en tecnolog\'ias de informaci\'on y su aplicaci\'on a dominios espec\'ificos provee el marco metodol\'ogico para el proyecto. El director propuesto, Profesor Rub\'en Francisco Manrique (PhD), miembro activo del grupo, ha publicado recientemente sobre resiliencia cooperativa en sistemas multi-agente de IA (IEEE Transactions on Artificial Intelligence, 2025) y sobre sistemas de recuperaci\'on aumentada por generaci\'on (RAG) y grafos de conocimiento, temas directamente aplicables al componente de inteligencia territorial de la propuesta.
+
+\subsection*{2. Instituto de Planificaci\'on y Promoci\'on de Soluciones Energ\'eticas para las Zonas No Interconectadas (IPSE)}
+
+Entidad adscrita al Ministerio de Minas y Energ\'ia, responsable de planificar y promover soluciones energ\'eticas para las ZNI. El IPSE constituye el actor institucional clave para la validaci\'on de la propuesta, dado que administra datos sobre la operaci\'on energ\'etica de las ZNI, incluyendo informaci\'on de generaci\'on, demanda, infraestructura instalada y condiciones territoriales. La articulaci\'on con el IPSE permitir\'a acceder a datos reales para la calibraci\'on y validaci\'on de los modelos propuestos, as\'i como explorar rutas de transferencia tecnol\'ogica hacia implementaci\'on real. El IPSE ha identificado p\'ublicamente la inteligencia artificial como oportunidad para la optimizaci\'on de soluciones energ\'eticas en ZNI (Ram\'irez, 2025).
+
+\subsection*{3. Sector productivo: Empresas del sector energ\'etico colombiano}
+
+La estrategia de validaci\'on de doble v\'ia de la propuesta requiere articulaci\'on con el sector energ\'etico para la obtenci\'on de datos operacionales de microrredes bien instrumentadas. Se contemplan tres actores principales:
+
+\begin{itemize}
+\item \textbf{Ecopetrol}, con 381 MW de capacidad renovable en operaci\'on al cierre de 2025 --- un aumento del 94\% respecto a 2024 --- y un portafolio total de 951 MW que super\'o cinco a\~nos antes la meta original de 900 MW para 2030 (Ecopetrol, Resultados 4T 2025). Las granjas solares operativas incluyen Castilla y San Fernando (Meta, \textasciitilde82 MW), La Cira Infantas (Santander, 56 MW), Port\'on del Sol (Caldas, 128 MW), La Iguana (Antioquia, 26 MW) y Brisas (Huila, 26,8 MW), adem\'as de una planta de hidr\'ogeno verde en la refiner\'ia de Cartagena (USD 28,5M). Ecopetrol ha suscrito convenios de cooperaci\'on con Minciencias por \$73 mil millones COP para CTeI en transici\'on energ\'etica. La diversidad geogr\'afica y de escala de estas instalaciones constituye un caso ideal para la validaci\'on de coordinaci\'on multi-agente a escala de flota.
+
+\item \textbf{Celsia} (Grupo Argos), l\'ider en generaci\'on solar distribuida en Colombia con un portafolio de m\'as de 197 MWp en proyectos de techos solares a trav\'es de su filial Atera, y un modelo de negocio que combina generaci\'on industrial con proyectos de energ\'ia comunitaria, lo que lo convierte en puente natural entre la validaci\'on industrial y la transferencia a comunidades.
+
+\item \textbf{EPM}, que adem\'as de la central Ituango (2,4 GW hidroel\'ectrica), cuenta con m\'as de 800 instalaciones solares en 20 departamentos con m\'as de 47 MWp vendidos y 88.500 paneles instalados, y ha manifestado inter\'es en la optimizaci\'on de activos renovables distribuidos.
+\end{itemize}
+
+La articulaci\'on con estas empresas permitir\'a acceder a datos operacionales reales de microrredes industriales y comerciales para la fase de calibraci\'on de modelos, as\'i como validar la transferibilidad de los agentes hacia contextos comunitarios.
+
+\subsection*{4. Comunidades de las ZNI}
+
+Los beneficiarios finales del proyecto participan como actores de co-creaci\'on y validaci\'on. Los talleres de apropiaci\'on social previstos permiten retroalimentar el dise\~no del sistema con conocimiento local y validar su pertinencia territorial.
+
+% =========================================================================
+\section{\'Area OCDE}
+% =========================================================================
+
+\begin{itemize}
+\item \textbf{Gran \'Area:} 2. Ingenier\'ia y Tecnolog\'ia
+\item \textbf{\'Area:} 2.B. Ingenier\'ias El\'ectrica, Electr\'onica e Inform\'atica
+\item \textbf{Disciplina:} 2B03 Automatizaci\'on y sistemas de control
+\end{itemize}
+
+% =========================================================================
+\section{Identificaci\'on y descripci\'on del problema}
+% =========================================================================
+
+Las microrredes de energ\'ia renovable en Colombia --- desde las plantas solares industriales hasta las instalaciones fotovoltaicas en ZNI --- comparten un problema estructural: operan sin inteligencia aut\'onoma. Esta limitaci\'on se manifiesta con distinta severidad seg\'un el contexto, pero se amplifica en proporci\'on a la vulnerabilidad del territorio. La presente propuesta aborda el problema en su forma m\'as severa: las Zonas No Interconectadas, donde las restricciones de conectividad, datos escasos y acceso limitado hacen que la autonom\'ia del agente sea una necesidad existencial. La validaci\'on en entornos de datos abundantes establece la l\'inea base; la evaluaci\'on en ZNI demuestra la robustez bajo las condiciones m\'as adversas.
+
+El Instituto de Planificaci\'on y Promoci\'on de Soluciones Energ\'eticas para las Zonas No Interconectadas (IPSE) identifica 1.664 localidades clasificadas como ZNI, distribuidas en 18 departamentos y 76 municipios, que abarcan el 52\% del territorio nacional y albergan a cerca de 1,9 millones de personas con una densidad poblacional de 3 habitantes/km\textsuperscript{2} (IPSE, 2025). Estas comunidades, predominantemente rurales, ind\'igenas y afrodescendientes, dependen de una capacidad instalada de 335.271 kW, de los cuales el 78\% (262.056 kW) corresponde a generaci\'on di\'esel, con una participaci\'on renovable de apenas el 22\% (IPSE, 2025). La mayor\'ia de las localidades ZNI cuenta con servicio el\'ectrico limitado a menos de 6 horas diarias (OCDE, 2023). Los costos de generaci\'on superan en 3 a 5 veces el costo de la energ\'ia en el Sistema Interconectado Nacional (SIN).
+
+En los \'ultimos a\~nos, el gobierno colombiano ha impulsado la instalaci\'on de sistemas de energ\'ia renovable en estas zonas --- el Fondo FENOGE ha comprometido \$349.375 miles de millones COP para implementar hasta 500 comunidades energ\'eticas focalizadas y priorizadas por el Ministerio de Minas y Energ\'ia (MinEnerg\'ia, 2024). Sin embargo, la experiencia ha evidenciado que la mera instalaci\'on de infraestructura renovable es insuficiente: en el departamento de Amazonas, tres plantas solares construidas con recursos p\'ublicos nunca generaron un solo kWh de energ\'ia por fallas de gobernanza y coordinaci\'on institucional (Siemens-Stiftung, 2023). La operaci\'on de estos sistemas presenta seis problemas estructurales que limitan severamente su impacto:
+
+\paragraph{0. Ausencia de observabilidad y fracaso silencioso de la inversi\'on p\'ublica.}
+El problema fundacional de las soluciones energ\'eticas en ZNI no es la falta de optimizaci\'on --- es la falta de observabilidad. El IPSE monitorea 188 de 1.664 localidades ZNI mediante telemetr\'ia; las restantes 1.476 se monitorean mediante llamadas telef\'onicas a ``informantes de energ\'ia'' (IPSE, 2025). Esta ceguera operativa permite que inversiones de miles de millones de pesos fracasen silenciosamente durante a\~nos: las plantas solares de Puerto Nari\~no (COP \$30.000 millones) estuvieron ocho a\~nos sin generar un solo kWh antes de que el fracaso fuera reportado p\'ublicamente. La investigaci\'on en sistemas fotovoltaicos no monitoreados documenta p\'erdidas significativas de potencia por fallas no detectadas --- degradaci\'on de paneles, inversores averiados, conexiones corro\'idas --- que se acumulan hasta hacer inviable la instalaci\'on. El costo de desplegar agentes de monitoreo en hardware de borde (\textasciitilde\$300-500 USD/nodo) en las 1.664 localidades ZNI equivaldr\'ia a USD \$500.000-830.000 --- menos del 0,1\% de lo invertido en el proyecto fallido de Puerto Nari\~no. La primera capacidad que necesitan la mayor\'ia de las microrredes en ZNI no es optimizaci\'on ni predicci\'on --- es \textit{informaci\'on}: alertas de falla, reportes de rendimiento, recomendaciones de mantenimiento. Un agente cuya salida primaria es un informe diario de estado ya transforma la ecuaci\'on de gesti\'on. Sin observabilidad, toda inversi\'on posterior --- en predicci\'on, optimizaci\'on o coordinaci\'on --- carece de fundamento sobre el cual construirse.
+
+\paragraph{1. Fragmentaci\'on operativa.}
+Cada sistema de generaci\'on opera de manera aislada, sin coordinaci\'on con sistemas vecinos ni con la demanda comunitaria. No existen mecanismos de balanceo regional ni de intercambio energ\'etico entre comunidades cercanas, lo que genera redundancias y desperdicio de capacidad instalada.
+
+\paragraph{2. Ausencia de predicci\'on.}
+Los sistemas actuales no incorporan capacidades de predicci\'on de generaci\'on renovable (inherentemente intermitente y dependiente de condiciones clim\'aticas locales) ni de demanda (que var\'ia seg\'un ciclos productivos, festividades y estacionalidad). Sin predicci\'on, los operadores no pueden anticipar excedentes ni d\'eficits, lo que resulta en sub-utilizaci\'on de energ\'ia renovable y dependencia continuada de respaldo di\'esel.
+
+\paragraph{3. Desconexi\'on del conocimiento territorial.}
+Las decisiones de operaci\'on energ\'etica no integran el conocimiento local sobre condiciones clim\'aticas, calendarios productivos agr\'icolas, restricciones sociales ni din\'amicas comunitarias. El resultado es un sistema t\'ecnicamente funcional pero socialmente desacoplado de la realidad territorial que pretende servir.
+
+\paragraph{4. Inescalabilidad del modelo de operaci\'on humana.}
+La operaci\'on y mantenimiento de las soluciones energ\'eticas en ZNI depende de t\'ecnicos especializados que deben desplazarse a zonas de dif\'icil acceso. Este modelo no escala a 1.664 localidades dispersas en geograf\'ias complejas (Amazon\'ia, Pac\'ifico, Orinoqu\'ia, zonas insulares). El IPSE monitorea 188 localidades v\'ia telemetr\'ia y las restantes 1.476 mediante llamadas telef\'onicas (IPSE, 2025). Se requiere un paradigma de operaci\'on que permita autonom\'ia local con supervisi\'on remota eficiente.
+
+\paragraph{5. Fragilidad institucional y fracasos documentados.}
+Tres plantas solares en Puerto Nari\~no, Amazonas (COP \$30.000 millones) llevan ocho a\~nos sin generar un solo kWh, con siete suspensiones, 17 ampliaciones y un proceso penal activo ante la Corte Suprema contra el exgobernador responsable (Portafolio, 2023; El Tiempo, 2025); la comunidad energ\'etica de Bah\'ia M\'alaga opera con di\'esel pese a estar dise\~nada 70/30 solar/di\'esel (El Espectador, 2025); y proyectos solares en La Guajira (COP \$43.000 millones) acumulaban 169 d\'ias de retraso y 13 modificaciones contractuales sin entregar paneles a las comunidades Way\'uu (Vor\'agine, 2024). Un sistema de monitoreo inteligente habr\'ia detectado estas fallas en d\'ias, no a\~nos --- la inteligencia operativa no previene la corrupci\'on, pero s\'i provee transparencia en tiempo real que hace los fracasos visibles y corregibles.
+
+\medskip
+
+El problema, en s\'intesis, no es la disponibilidad de tecnolog\'ia renovable --- que ya se est\'a instalando --- sino la ausencia de una \textbf{arquitectura de capacidades graduadas} que proteja y amplifique la inversi\'on en hardware. La brecha no se cierra con un solo sistema de ``software inteligente'', sino con cuatro capas de inteligencia desplegadas incrementalmente: \textit{observabilidad} primero --- para que las fallas sean visibles antes de convertirse en abandonos; \textit{predicci\'on} segundo --- para anticipar generaci\'on y demanda y reducir el desgaste de bater\'ias; \textit{optimizaci\'on} tercero --- para maximizar el aprovechamiento de la energ\'ia renovable disponible y minimizar el respaldo di\'esel; y \textit{coordinaci\'on de flota} cuarto --- para que los patrones aprendidos en un sitio aceleren el despliegue en los dem\'as. Cada capa protege la inversi\'on de la anterior y amplifica su valor. Sin la primera capa (observabilidad), las dem\'as no tienen datos sobre los cuales operar. Esta arquitectura graduada es la contribuci\'on central que esta propuesta desarrolla.
+
+Este problema es de inter\'es nacional prioritario, inscrito en la agenda de transici\'on energ\'etica del pa\'is (CONPES 4075 de 2022, Ley 2099 de 2021) y de pertinencia directa para la Misi\'on de Transici\'on Energ\'etica de las PIIOM. Su soluci\'on requiere la convergencia de capacidades de inteligencia artificial, ingenier\'ia de sistemas y conocimiento territorial que esta propuesta articula.
+
+% =========================================================================
+\section{Antecedentes}
+% =========================================================================
+
+La gesti\'on inteligente de microrredes mediante t\'ecnicas de inteligencia artificial ha sido objeto de investigaci\'on creciente a nivel global. A continuaci\'on se describen los antecedentes m\'as relevantes:
+
+\subsection*{Sistemas multi-agente para gesti\'on energ\'etica}
+
+La aplicaci\'on de sistemas multi-agente (SMA) a la gesti\'on de microrredes ha sido objeto de intensa investigaci\'on. Mahela et al. (2022) presentaron una revisi\'on comprensiva de arquitecturas SMA para control distribuido, comercio energ\'etico y restauraci\'on de redes en \textit{CSEE Journal of Power and Energy Systems}. Altin et al. (2023) consolidaron el estado del arte de controladores multi-agente para microrredes en \textit{Energies}. M\'as recientemente, Muszynski et al. (2025) propusieron EnergyTwin, un gemelo digital basado en agentes donde cada activo energ\'etico es modelado como un agente aut\'onomo que interact\'ua con un coordinador central mediante planificaci\'on de horizonte rodante. En el \'ambito del aprendizaje por refuerzo multi-agente (MARL), Ye et al. (2021) desarrollaron un algoritmo multi-actor-attention-critic (MAAC) para comercio P2P en \textit{IEEE Transactions on Smart Grid}, logrando mejoras del 15-25\% en eficiencia de utilizaci\'on renovable. Li et al. (2026) demostraron la aplicaci\'on de MARL con redes GRU para resiliencia de microrredes ante eventos clim\'aticos extremos en \textit{Expert Systems with Applications}.
+
+\subsection*{Predicci\'on de generaci\'on renovable y demanda}
+
+Los modelos de predicci\'on de series temporales energ\'eticas han evolucionado en tres generaciones: modelos estad\'isticos (ARIMA, Prophet), redes recurrentes (LSTM/GRU, MAPE 3-8\% con datos abundantes; Wang et al., 2019), y arquitecturas Transformer ligeras. PatchTST (Nie et al., 2023) segmenta la serie temporal en parches sem\'anticos y aplica atenci\'on sobre ellos, logrando una reducci\'on del 21\% en MSE respecto a arquitecturas Transformer previas y, crucialmente, representaciones que transfieren mejor entre dominios que las de LSTM. En paralelo, los modelos fundacionales de series temporales --- Chronos-Bolt (Ansari et al., 2024), TimesFM (Das et al., 2024), Moirai-2 (Liu et al., 2025) --- permiten predicci\'on zero-shot en sitios sin datos hist\'oricos, superando modelos entrenados localmente en hasta un 70\% (SPIRIT, 2025). Sin embargo, los modelos fundacionales grandes (>200M par\'ametros) no son viables en hardware de borde; solo las variantes compactas (Chronos-Bolt Tiny, 9M par\'ametros) pueden ejecutarse en computadores de placa \'unica. Investigaciones recientes sobre LLMs como predictores de series temporales (Gruver et al., 2023) mostraron competitividad inicial, pero Park et al. (2025) demostraron que son fr\'agiles ante ruido --- modelos lineales simples los superan bajo perturbaciones m\'inimas, descartando su uso como predictores primarios en sistemas de misi\'on cr\'itica. Estos modelos han sido desarrollados y validados predominantemente en contextos de datos abundantes --- su adaptaci\'on a contextos de datos escasos como las ZNI colombianas constituye un vac\'io identificado por Bodewes et al. (2024).
+
+\subsection*{Grafos de conocimiento para sistemas energ\'eticos}
+
+La aplicaci\'on de grafos de conocimiento al sector energ\'etico es un campo emergente. Chun et al. (2020) propusieron el Energy Knowledge Graph (EKG) como esquema integrador de recursos de conocimiento energ\'etico. Wang et al. (2021) revisaron el estado de desarrollo y perspectivas de grafos de conocimiento en redes inteligentes en \textit{IET Generation, Transmission \& Distribution}, identificando el potencial de la interoperabilidad sem\'antica de datos energ\'eticos mediante t\'ecnicas de NLP. Liu et al. (2023) desarrollaron un sistema de preguntas-respuestas basado en grafos de conocimiento el\'ectricos. Sin embargo, ning\'un trabajo publicado integra conocimiento territorial y social (patrones productivos, calendarios comunitarios, restricciones de gobernanza) en grafos de conocimiento energ\'eticos para la gesti\'on de microrredes.
+
+\subsection*{Agentes LLM para sistemas energ\'eticos}
+
+Una frontera emergente (2024-2025) es la aplicaci\'on de modelos de lenguaje de gran escala (LLM) como razonadores en agentes energ\'eticos. Zhang, C. et al. (2026) publicaron en \textit{Applied Energy} una revisi\'on de trece roles de LLMs en sistemas energ\'eticos. Wen \& Chen (2025) presentaron X-GridAgent, un sistema multi-agente potenciado por LLM para an\'alisis de redes el\'ectricas, y Wu et al. (2025) propusieron GridMind, integrando LLMs con solvers determinísticos para flujo \'optimo de potencia. Sin embargo, toda esta literatura se enfoca en redes de gran escala en pa\'ises desarrollados --- la aplicaci\'on de agentes inteligentes (con o sin LLM) a microrredes comunitarias en contextos de acceso energ\'etico limitado no ha sido explorada.
+
+\subsection*{Contexto colombiano}
+
+En Colombia, Colmenares-Quintero et al. (2023) propusieron una arquitectura centrada en datos para microrredes renovables inteligentes espec\'ificamente dise\~nada para ZNI colombianas en \textit{Energies}, constituyendo el antecedente m\'as directo para esta propuesta. Ceron et al. (2025) analizaron las oportunidades de microrredes y fuentes renovables no convencionales para la transici\'on energ\'etica en regiones off-grid colombianas. El IPSE ha publicado an\'alisis sobre el potencial de la inteligencia artificial para la optimizaci\'on de soluciones energ\'eticas en ZNI (Ram\'irez, 2025), y su Centro Nacional de Monitoreo (CNM) provee telemetr\'ia en tiempo real de 188 localidades --- infraestructura de datos sobre la cual pueden construirse modelos predictivos. Desde la perspectiva del grupo TICSw, Chac\'on-Chamorro, Manrique et al. (2025) publicaron en \textit{IEEE Transactions on Artificial Intelligence} un marco para resiliencia cooperativa en sistemas multi-agente --- definida como la capacidad de un colectivo de agentes de anticipar, preparar, resistir, recuperar y transformar ante disrupciones --- validado con agentes de aprendizaje por refuerzo y agentes aumentados con LLM en el entorno Melting Pot 2.0. Mosquera, Manrique et al. (2026) publicaron en \textit{IEEE Transactions on Artificial Intelligence} una evaluaci\'on de capacidades cooperativas de agentes LLM, y Chac\'on-Chamorro, Giraldo y Quijano (2026) propusieron un framework para aprender funciones de recompensa guiadas por m\'etricas de resiliencia cooperativa. Esta l\'inea de investigaci\'on provee el marco te\'orico directo para la coordinaci\'on inter-agente que esta propuesta requiere.
+
+\subsection*{Control industrial de microrredes y sus limitaciones}
+
+Los sistemas SCADA convencionales para microrredes, organizados seg\'un la jerarqu\'ia ISA-95 y comunicados v\'ia IEC 61850, Modbus RTU/TCP y OPC-UA, fueron ``construidos para monitoreo y control b\'asico, no para anal\'itica predictiva, optimizaci\'on din\'amica ni participaci\'on en mercados en tiempo real'' (Microgrid Knowledge, 2025). La plataforma VOLTTRON (DOE/PNNL) representa el antecedente m\'as cercano a un sistema multi-agente para gesti\'on energ\'etica: arquitectura de agentes con bus publicar-suscribir, ejecutable en Raspberry Pi, validada en el proyecto CETC. Sin embargo, VOLTTRON carece de coordinaci\'on de flota, grafos de conocimiento y adaptaci\'on de dominio --- las tres brechas que esta propuesta aborda.
+
+\subsection*{Valor cuantificado de la predicci\'on vs.\ reglas en microrredes}
+
+La literatura reciente permite cuantificar el valor incremental de la predicci\'on inteligente sobre controladores basados en reglas. Mazzola et al. (2017) evaluaron el valor del despacho basado en pron\'osticos en microrredes rurales off-grid (600 hogares), encontrando ahorros de costos operativos del 2-7\% respecto a despacho heur\'istico --- un beneficio modesto pero significativo en el contexto de comunidades con recursos limitados. En microrredes conectadas a la red con tarifas complejas, los ahorros pueden alcanzar 20-79\% (Xendee/UCSD, 2024), pero este rango no aplica al contexto off-grid de las ZNI. Ouedraogo et al. (2021) evaluaron en \textit{Solar Energy} el impacto de estrategias de gesti\'on energ\'etica conscientes de la degradaci\'on sobre el ciclado de bater\'ias en microrredes PV, mostrando que la inclusi\'on de degradaci\'on en la funci\'on objetivo reduce significativamente los ciclos de carga/descarga --- extendiendo la vida \'util de las bater\'ias, el componente m\'as costoso de las microrredes en ZNI. Sin embargo, Pinter et al. (2025) advierten que las metodolog\'ias de evaluaci\'on t\'ipicas sobreestiman las ventajas del control predictivo (MPC) en aproximadamente un 69\% debido a artefactos de promediado temporal. En el \'ambito de la coordinaci\'on de flota, Yang et al. (2025) demostraron que el aprendizaje federado personalizado para microrredes interconectadas logra reducciones adicionales de costo y acelera la convergencia de nuevos sitios respecto al entrenamiento aislado. La evidencia indica que el valor de la predicci\'on no es transformador por s\'i solo para sistemas off-grid, sino que se compone en capas: monitoreo + predicci\'on + gesti\'on de degradaci\'on de bater\'ias + coordinaci\'on de flota generan un efecto compuesto estimado del 25-40\% de mejora total respecto a la l\'inea base sin controlador.
+
+\subsection*{Transferencia de aprendizaje para sistemas energ\'eticos}
+
+Sarmas et al. (2022) demostraron que la transferencia de aprendizaje reduce la necesidad de datos hist\'oricos en un 80\% para predicci\'on solar, con mejoras del 12,6\% en RMSE. Gao et al. (2024) lograron transferencia sin etiquetas entre regiones clim\'aticas mediante adaptaci\'on adversarial de dominio. Paletta et al. (2024) mostraron que la normalizaci\'on informada por modelos f\'isicos permite transferencia competitiva sin datos del sitio objetivo --- t\'ecnica directamente aplicable usando datos de irradiancia de cielo despejado disponibles para cualquier coordenada colombiana (NSRDB, NASA POWER). El framework de aprendizaje federado Flower (Beutel et al., 2020) ha sido demostrado en Raspberry Pi, validando el entrenamiento colaborativo en hardware de borde. Sin embargo, ning\'un trabajo ha evaluado la degradaci\'on de rendimiento al transferir modelos desde microrredes bien instrumentadas hacia microrredes comunitarias con datos escasos, ni ha propuesto grafos de conocimiento como mecanismo complementario de transferencia.
+
+\subsection*{Monitoreo remoto y el costo de la ceguera operativa}
+
+Estudios en sistemas fotovoltaicos no monitoreados demuestran p\'erdidas significativas de potencia por fallas no detectadas --- degradaci\'on de paneles, inversores averiados y conexiones corro\'idas que se acumulan hasta comprometer la viabilidad de la instalaci\'on. La literatura sobre monitoreo remoto de mini-redes en pa\'ises en desarrollo documenta reducciones sustanciales en costos de operaci\'on y mantenimiento, con per\'iodos de recuperaci\'on de inversi\'on inferiores a un a\~no, debido a la reducci\'on de visitas t\'ecnicas de emergencia y la detecci\'on temprana de fallas (ESMAP/World Bank, 2019). En el contexto colombiano, el IPSE monitorea 188 de 1.664 localidades ZNI v\'ia telemetr\'ia; las restantes 1.476 se monitorean mediante llamadas telef\'onicas a ``informantes de energ\'ia'' --- un modelo que no detect\'o el fracaso de Puerto Nari\~no durante ocho a\~nos. El costo de desplegar agentes de monitoreo en las 1.664 localidades (\textasciitilde USD 500.000-830.000 en hardware) equivale a menos del 0,1\% de lo invertido en el proyecto fallido de Puerto Nari\~no (COP \$30.000 millones). Esta evidencia fundamenta la decisi\'on arquitect\'onica de la propuesta de priorizar la observabilidad como la primera capa de inteligencia, sobre la cual se construyen las capas de predicci\'on, optimizaci\'on y coordinaci\'on.
+
+\subsection*{Brechas identificadas}
+
+La revisi\'on de la literatura permite identificar las siguientes brechas convergentes que esta propuesta aborda: (i) no existe un sistema que integre grafos de conocimiento como sustrato sem\'antico para la toma de decisiones de agentes aut\'onomos en microrredes; (ii) los marcos de resiliencia cooperativa multi-agente no han sido aplicados a sistemas energ\'eticos; (iii) los modelos de predicci\'on energ\'etica no han sido evaluados sistem\'aticamente en su transferibilidad desde entornos de datos abundantes hacia entornos de datos escasos t\'ipicos de ZNI; (iv) la arquitectura multi-agente VOLTTRON, el referente m\'as cercano, carece de coordinaci\'on de flota, grafos de conocimiento y adaptaci\'on de dominio; (v) Am\'erica Latina est\'a severamente subrepresentada en la literatura de MARL para microrredes; (vi) no existe implementaci\'on alguna de un agente aut\'onomo persistente y regulado para la gesti\'on de microrredes en ZNI colombianas; y (vii) no existe evidencia publicada de monitoreo inteligente a escala de flota para microrredes en pa\'ises en desarrollo --- las plataformas comerciales existentes (SparkMeter, SteamaCo, SolarAssistant) proveen monitoreo pero carecen de predicci\'on basada en ML, despacho aut\'onomo y coordinaci\'on multi-agente. Esta propuesta aborda precisamente esa convergencia.
+
+% =========================================================================
+\section{Justificaci\'on}
+% =========================================================================
+
+La pertinencia de esta propuesta se fundamenta en cuatro pilares:
+
+\subsection*{Pertinencia nacional y oportunidad temporal}
+
+La convergencia en 2025-2026 de tres factores crea una ventana de oportunidad \'unica: (i) un marco regulatorio reci\'en aprobado para comunidades energ\'eticas (Decreto 2236 de 2023; CREG 101\,072 de 2025), (ii) inversi\'on masiva en infraestructura renovable en ZNI (FENOGE, \$349 mil millones COP para hasta 500 comunidades energ\'eticas; MinEnerg\'ia, 2024), y (iii) avances en IA de borde que permiten ejecutar modelos en hardware de \$80 con menos de 0,5 GB de memoria. Sin embargo, el marco normativo avanza m\'as r\'apido que la capacidad tecnol\'ogica: existe el mandato de crear comunidades energ\'eticas aut\'onomas, pero no las herramientas de software inteligente para operarlas. Esta propuesta contribuye a cerrar esa brecha, aline\'andose con la Ley 2099 de 2021, el CONPES 4075 de 2022 y el Plan Nacional de Desarrollo 2022-2026.
+
+\subsection*{Pertinencia cient\'ifica}
+
+La convergencia de sistemas multi-agente, grafos de conocimiento contextual y predicci\'on renovable en contextos de datos escasos constituye un vac\'io en la literatura. La propuesta genera nuevo conocimiento en: (i) arquitecturas multi-agente agn\'osticas al dominio para microrredes con restricciones severas de conectividad; (ii) cuantificaci\'on de la degradaci\'on al transferir modelos predictivos desde entornos de datos abundantes hacia datos escasos; (iii) modelos de predicci\'on calibrados para condiciones tropicales colombianas; y (iv) grafos de conocimiento contextual para gesti\'on energ\'etica. La estrategia de validaci\'on de doble v\'ia convierte la brecha entre datos abundantes y escasos en pregunta de investigaci\'on expl\'icita, contribuyendo a la frontera de domain adaptation en sistemas energ\'eticos.
+
+\subsection*{Pertinencia social y enfoque diferencial}
+
+Las ZNI concentran poblaciones hist\'oricamente excluidas: cerca del 78\% de las localidades se concentra en el Pac\'ifico (Nari\~no: 600, Choc\'o: 509, Cauca: 189), donde el 82,1\% de la poblaci\'on en Choc\'o es afrodescendiente y el 53\% de los municipios de mayor\'ia afrodescendiente presentan pobreza multidimensional (DANE, 2023). La dependencia de di\'esel perpet\'ua vulnerabilidades econ\'omicas y de seguridad, y la contaminaci\'on del aire dom\'estico por cocci\'on con le\~na causa 2,9 millones de muertes prematuras anuales a nivel global (WHO, 2023). La propuesta incorpora apropiaci\'on social del conocimiento con talleres que incluyen l\'ideres comunitarios, mujeres cabeza de hogar y autoridades \'etnico-territoriales.
+
+\subsection*{Factibilidad t\'ecnica e institucional}
+
+La arquitectura desacopla inteligencia de protecci\'on: la seguridad el\'ectrica permanece en rel\'es y controladores dedicados; la inteligencia se despliega en hardware de borde (\textasciitilde\$300-500 USD/nodo). A este costo, incluso mejoras del 2-7\% (Mazzola et al., 2017) amortizan la inversi\'on en el primer a\~no, comparado con controladores comerciales a \$155.000 USD/MW promedio (NREL, 2018). La viabilidad de IA de borde cuenta con evidencia convergente: Huang et al. (2025) lograron 30\% m\'as utilizaci\'on renovable con Raspberry Pi; VOLTTRON (DOE/PNNL) reduce consumo pico en 15\%; SolarAssistant opera en miles de instalaciones en pa\'ises en desarrollo. Un prototipo funcional con 155 pruebas automatizadas valida la viabilidad arquitect\'onica, construido sobre un runtime Rust con persistencia event-sourced, regulaci\'on homeost\'atica y comunicaci\'on federada --- dise\~no inherentemente fail-safe donde la falla degrada al statu quo, nunca a un estado inseguro. El candidato aporta experiencia en IA para el sector energ\'etico; el grupo TICSw (A1) provee respaldo institucional y expertise en grafos de conocimiento y sistemas multi-agente, con colaboraci\'on activa de los profesores Manrique, Giraldo y Quijano (IEEE TAI, 2025).
+
+% =========================================================================
+\section{Marco te\'orico}
+% =========================================================================
+
+La propuesta se fundamenta en siete cuerpos te\'oricos:
+
+\subsection{Sistemas multi-agente (SMA)}
+
+Un sistema multi-agente es un sistema compuesto por m\'ultiples agentes de software que interact\'uan entre s\'i para lograr objetivos individuales o colectivos (Wooldridge, 2009). En el contexto de microrredes, cada agente representa una unidad de generaci\'on-consumo que toma decisiones aut\'onomas de despacho mientras coopera con otros agentes para maximizar el bienestar del sistema completo. Los enfoques de coordinaci\'on multi-agente relevantes incluyen: negociaci\'on distribuida (Smith, 1980), aprendizaje por refuerzo multi-agente (MARL) (Zhang et al., 2021), y protocolos de consenso (Olfati-Saber et al., 2007). La reciente publicaci\'on de Chac\'on-Chamorro, Manrique et al. (2025) define la resiliencia cooperativa --- la capacidad de un colectivo de agentes de anticipar, preparar, resistir, recuperar y transformar ante disrupciones --- y provee una metodolog\'ia cuantitativa para su medici\'on, directamente aplicable a la evaluaci\'on de coordinaci\'on de agentes en microrredes bajo condiciones adversas.
+
+\subsection{Predicci\'on de series temporales energ\'eticas: arquitectura h\'ibrida de tres niveles}
+
+La predicci\'on de generaci\'on renovable y demanda energ\'etica se modela como un problema de pron\'ostico de series temporales multivariadas. La propuesta adopta una arquitectura de predicci\'on de tres niveles dise\~nada para operar en el borde computacional:
+
+\paragraph{Nivel 1 --- Predictor de borde (cada nodo RPi):}
+Modelos Transformer ligeros tipo PatchTST (Nie et al., 2023), que segmentan la serie temporal en parches sem\'anticos y aplican atenci\'on sobre ellos. PatchTST logra una reducci\'on del 21\% en MSE respecto a arquitecturas Transformer previas en benchmarks de series temporales (Nie et al., 2023) y, crucialmente, sus representaciones basadas en parches transfieren mejor entre dominios que las de LSTM, porque capturan patrones locales generalizables. Cuantizado a INT8, un PatchTST ocupa \textasciitilde250-500 KB con inferencia estimada <2 ms en RPi 5 (basado en benchmarks de modelos TFLite de tama\~no comparable en ARM Cortex-A76; la validaci\'on espec\'ifica en RPi 5 se realizar\'a en Fase 2). Como respaldo, se mantiene un LSTM cuantizado (\textasciitilde800 KB, <0,5 ms) para escenarios donde PatchTST no converge. Ambos modelos incorporan normalizaci\'on por cielo despejado (clear-sky normalization) usando datos de irradiancia te\'orica (NSRDB, NASA POWER o PVLib), que transforma la predicci\'on solar de un problema dependiente del dominio a uno cuasi-invariante (Nie et al., 2024). Los intervalos de predicci\'on se obtienen mediante predicci\'on conforme (conformal prediction), que no requiere supuestos distribucionales y provee al optimizador de despacho intervalos calibrados para decisiones conservadoras bajo incertidumbre.
+
+\paragraph{Nivel 2 --- Inteligencia de flota (coordinador):}
+Modelos fundacionales de series temporales (Chronos-Bolt, 9M par\'ametros, viable en RPi; Ansari et al., 2024) para predicci\'on zero-shot en sitios nuevos sin datos hist\'oricos --- el escenario de arranque en fr\'io de cada ZNI. El aprendizaje federado (Flower; Beutel et al., 2020) permite mejora colaborativa entre agentes agrupados por cl\'uster clim\'atico, sin compartir datos crudos.
+
+\paragraph{Nivel 3 --- Razonamiento causal (el agente):}
+El m\'odulo de razonamiento del agente NO produce pron\'osticos num\'ericos --- la literatura reciente demuestra que los LLM son fr\'agiles ante ruido en predicci\'on de series temporales, con modelos lineales simples que los superan (Park et al., 2025). En cambio, el agente razona sobre los pron\'osticos: interpreta anomal\'ias (``la generaci\'on cay\'o 40\% --- ¿nubosidad o degradaci\'on de panel?''), consulta el grafo de conocimiento para contexto causal, y toma decisiones de despacho que integran predicciones + restricciones + conocimiento territorial. La implementaci\'on primaria de este m\'odulo utiliza heur\'isticas basadas en reglas (\'arboles de decisi\'on sobre umbrales de los modelos predictivos); como extensi\'on de investigaci\'on, se evaluar\'a la viabilidad de modelos de lenguaje ternarios (BitNet 1.58-bit, 2B par\'ametros, \textasciitilde0,4 GB) como razonadores flexibles en el borde.
+
+\subsection{Grafos de conocimiento}
+
+Un grafo de conocimiento es una representaci\'on formal de entidades y sus relaciones en un dominio espec\'ifico, expresada como un conjunto de tripletas (sujeto, predicado, objeto) (Hogan et al., 2021). En esta propuesta, el grafo de conocimiento energ\'etico-territorial integra: (i) recursos energ\'eticos (paneles solares, turbinas, bater\'ias, generadores di\'esel), (ii) condiciones ambientales (irradiancia, r\'egimen de lluvias, temperatura), (iii) patrones de consumo (ciclos productivos agr\'icolas, horarios comunitarios, festividades), y (iv) restricciones sociales (prioridades de uso, gobernanza comunitaria). La construcci\'on del grafo emplea t\'ecnicas de extracci\'on de informaci\'on de textos t\'ecnicos y reportes mediante procesamiento de lenguaje natural, siguiendo la l\'inea de investigaci\'on del grupo TICSw en organizaci\'on autom\'atica de recursos mediante grafos de conocimiento (Manrique et al., 2018).
+
+\subsection{Optimizaci\'on de despacho energ\'etico}
+
+El problema de despacho \'optimo de una microrred se formula como un problema de optimizaci\'on multi-objetivo que busca minimizar simult\'aneamente el costo operativo, las emisiones de CO\textsubscript{2} y la energ\'ia no servida, sujeto a restricciones de balance energ\'etico, capacidad de almacenamiento, l\'imites de generaci\'on y restricciones de rampas. Los enfoques de soluci\'on incluyen programaci\'on lineal mixta entera (MILP), metaheur\'isticas (algoritmos gen\'eticos, optimizaci\'on por enjambre de part\'iculas), y aprendizaje por refuerzo profundo (Deep RL) que aprende pol\'iticas de despacho directamente de la experiencia operativa (Fran\c{c}ois-Lavet et al., 2018).
+
+\subsection{Transferencia de aprendizaje y adaptaci\'on de dominio para sistemas energ\'eticos}
+
+La transferencia de aprendizaje (transfer learning) permite reutilizar modelos entrenados en un dominio fuente con datos abundantes para mejorar el rendimiento en un dominio objetivo con datos escasos (Pan \& Yang, 2010). En el contexto de esta propuesta, el dominio fuente son microrredes bien instrumentadas (industriales o de bases de datos abiertas) y el dominio objetivo son las ZNI colombianas. Las t\'ecnicas relevantes incluyen: pre-entrenamiento en dominio fuente seguido de ajuste fino (fine-tuning) con datos limitados del dominio objetivo, alineaci\'on de caracter\'isticas (feature alignment) para reducir la discrepancia entre distribuciones de datos, y aprendizaje federado (federated learning) que permite mejorar modelos de forma colaborativa entre m\'ultiples sitios sin compartir datos crudos --- relevante tanto para privacidad de datos industriales como para restricciones de ancho de banda en ZNI. La compresi\'on de modelos mediante cuantizaci\'on (TensorFlow Lite), destilaci\'on de conocimiento y poda permite transferir la capacidad de modelos entrenados en servidores industriales hacia hardware de borde con recursos limitados, con degradaciones t\'ipicas de MAPE inferiores al 5\% absoluto (Jacob et al., 2018). Los grafos de conocimiento constituyen un mecanismo complementario de transferencia: al codificar relaciones causales entre variables (e.g., estacionalidad $\rightarrow$ irradiancia $\rightarrow$ generaci\'on solar), permiten que un agente en un sitio nuevo con datos escasos aproveche la estructura causal aprendida en sitios con datos abundantes, reduciendo la necesidad de datos hist\'oricos extensos.
+
+\subsection{Arquitecturas de agentes aut\'onomos y gobernanza mediante teor\'ia de control}
+
+La propuesta adopta un enfoque de agente nativo de IA (AI-native agent) en el que el n\'ucleo de razonamiento del sistema es un m\'odulo de toma de decisiones capaz de ejecutar herramientas (invocaci\'on de funciones) para interactuar con el entorno f\'isico de la microrred --- un paradigma emergente formalizado recientemente en ``A Control-Theoretic Foundation for Agentic Systems'' (Eslami \& Yu, arXiv:2603.10779, marzo 2026). En esta arquitectura, el agente utiliza herramientas (lectura de sensores v\'ia Modbus, optimizaci\'on LP, consultas al grafo de conocimiento) para tomar decisiones situadas en contexto. El m\'odulo de razonamiento admite dos implementaciones: (a) heur\'isticas basadas en reglas como l\'inea base determinista, y (b) un modelo de lenguaje ligero como razonador flexible, cuya viabilidad en el borde ser\'a evaluada como pregunta de investigaci\'on. La gobernanza del agente se implementa mediante un controlador homeost\'atico inspirado en mecanismos biol\'ogicos de regulaci\'on (Mineault et al., 2024; ``NeuroAI for AI Safety''), que define puntos de operaci\'on (setpoints), puertas de seguridad (safety gates) y lazos de retroalimentaci\'on evaluador-gobernado (EGRI: Evaluator-Governed Recursive Improvement) donde el agente eval\'ua sus propias predicciones contra los resultados observados y ajusta sus par\'ametros operativos. Los avances recientes en modelos de lenguaje ternarios de 1.58 bits (BitNet; Ma et al., 2024) sugieren que estos razonadores podr\'ian operar en hardware de borde con menos de 0,4 GB de memoria no embebida y 0,028 J por token de inferencia, abriendo la posibilidad de desplegar agentes con capacidad de razonamiento en computadores de placa \'unica alimentados por energ\'ia solar. Sin embargo, la calidad de razonamiento de modelos de 2B par\'ametros es limitada y su madurez para aplicaciones de misi\'on cr\'itica a\'un no est\'a demostrada (Microsoft, 2025), por lo que la arquitectura prioriza las heur\'isticas deterministas como mecanismo primario de decisi\'on y eval\'ua el modelo de lenguaje como extensi\'on experimental. Esta convergencia entre teor\'ia de control, IA agentiva y modelos eficientes de borde constituye una frontera de investigaci\'on activa que esta propuesta contribuye a explorar en un dominio de aplicaci\'on concreto.
+
+\subsection{Sistemas operativos ag\'enticos y computaci\'on aut\'onoma de borde}
+
+El concepto de ``sistema operativo para agentes'' (Agent OS) ha emergido como un paradigma diferenciado en 2024-2026, distingui\'endose tanto de los frameworks de agentes (LangChain, CrewAI --- herramientas para construir agentes) como de las plataformas de agentes (infraestructura en la nube para hospedar agentes). Un Agent OS provee primitivas a nivel de kernel: gesti\'on del ciclo de vida de procesos, memoria basada en eventos, ejecuci\'on de herramientas con seguridad basada en capacidades, comunicaci\'on inter-agente y pol\'iticas de gobernanza (Mei et al., COLM 2025). Esta distinci\'on es fundamental para el contexto de las ZNI: los frameworks y plataformas existentes asumen conectividad permanente a la nube y recursos computacionales abundantes --- supuestos que no se cumplen en el borde.
+
+La arquitectura de esta propuesta se fundamenta en un runtime de agentes basado en Rust que provee tres primitivas distintivas no presentes en los frameworks de agentes existentes:
+
+\paragraph{(a) Persistencia basada en eventos (event sourcing).}
+Cada lectura de sensor, predicci\'on, decisi\'on de despacho y anomal\'ia detectada se registra como un evento inmutable en un diario de solo-adici\'on (append-only journal). Este dise\~no provee trazabilidad completa de cada decisi\'on del agente, reproducibilidad determinista del comportamiento (cualquier estado puede reconstruirse reproduciendo la secuencia de eventos), y conformidad con los requisitos emergentes de auditor\'ia de sistemas de IA (Reglamento (UE) 2024/1689, en vigor pleno a partir de agosto de 2026). En el contexto de las ZNI, donde la falta de transparencia ha permitido que plantas solares de COP \$30.000 millones permanezcan abandonadas durante a\~nos sin detecci\'on, la trazabilidad inmutable constituye un mecanismo de rendici\'on de cuentas por dise\~no.
+
+\paragraph{(b) Regulaci\'on homeost\'atica.}
+El agente se autorregula a trav\'es de tres dimensiones: operacional (transiciones de modo entre estados explorar/ejecutar/verificar/recuperar, determinadas por las condiciones del entorno y la confianza en las predicciones), cognitiva (gesti\'on de la presi\'on de contexto y los recursos computacionales disponibles --- el agente reduce la complejidad de sus modelos cuando el hardware est\'a bajo estr\'es t\'ermico o energ\'etico), y econ\'omica (adaptaci\'on del comportamiento seg\'un el presupuesto de recursos disponibles --- si la bater\'ia est\'a por debajo de un umbral cr\'itico, el agente prioriza funciones esenciales sobre optimizaci\'on). Este paradigma, inspirado en la homeostasis biol\'ogica (Mineault et al., 2024), representa un enfoque de seguridad distinto de las restricciones r\'igidas: el agente se regula naturalmente bajo escasez de recursos en lugar de fallar abruptamente.
+
+\paragraph{(c) Comunicaci\'on federada.}
+Los agentes descubren y se comunican con pares mediante una capa de mensajer\'ia distribuida, habilitando coordinaci\'on a nivel de flota sin servidor central --- una propiedad cr\'itica para sitios ZNI con conectividad intermitente. Cuando la conectividad se pierde, cada agente opera de forma aut\'onoma con su modelo local; cuando se restablece, los agentes sincronizan aprendizajes acumulados mediante protocolos de almacenamiento y reenv\'io, sin requerir que todos los nodos est\'en simult\'aneamente en l\'inea. Yang et al. (2025) demostraron que el aprendizaje federado personalizado para microrredes interconectadas logra reducciones adicionales de costo y acelera significativamente la convergencia de nuevos sitios respecto al entrenamiento aislado.
+
+\medskip
+
+El contexto de despliegue de esta arquitectura genera una propiedad autorreferencial singular: el agente ejecuta en un dispositivo de borde (Raspberry Pi) alimentado por energ\'ia solar, que a su vez forma parte de la microrred que el propio agente gestiona. La calidad de las decisiones de despacho del agente afecta directamente sus propios recursos computacionales --- un agente que desperdicia energ\'ia no puede sostener su propia inferencia. Esta topolog\'ia crea una presi\'on de selecci\'on natural hacia un comportamiento conservador y energ\'eticamente eficiente: el agente que optimiza mal, se apaga a s\'i mismo. La gesti\'on aut\'onoma de energ\'ia en naves espaciales (desde la d\'ecada de 1980) constituye el an\'alogo m\'as cercano en la literatura, pero las naves espaciales no utilizan razonamiento basado en aprendizaje autom\'atico ni sirven a consumidores externos --- la combinaci\'on de autonom\'ia energ\'etica, aprendizaje adaptativo y servicio a comunidades humanas no tiene precedente directo.
+
+La implicaci\'on de investigaci\'on trasciende el dominio energ\'etico: si esta arquitectura logra gestionar infraestructura f\'isica bajo las restricciones de las ZNI (sin conectividad, datos escasos, clima extremo), valida la computaci\'on aut\'onoma de agentes para cualquier sistema cr\'itico remoto --- tratamiento de aguas, agricultura de precisi\'on, telecomunicaciones, gesti\'on de edificios --- donde las mismas restricciones de autonom\'ia, robustez y auditabilidad aplican.
+
+% =========================================================================
+\section{Objetivos}
+% =========================================================================
+
+\subsection{Objetivo general}
+
+Dise\~nar, implementar y evaluar un agente aut\'onomo persistente, regulado y desplegable en el borde computacional para la gesti\'on de microrredes de energ\'ia renovable como infraestructura f\'isica cr\'itica, basado en un sistema operativo ag\'entico con persistencia event-sourced y regulaci\'on homeost\'atica, que integre capas incrementales de observabilidad, predicci\'on, optimizaci\'on de despacho y coordinaci\'on de flota. La evaluaci\'on cuantificar\'a tanto el valor marginal de cada capa de inteligencia sobre la operaci\'on de la microrred, como las propiedades que definen la viabilidad de la autonom\'ia ag\'entica sobre infraestructura cr\'itica --- persistencia, regulaci\'on acotada, degradaci\'on segura, trazabilidad longitudinal y adaptaci\'on bajo transferencia de dominio --- validando el sistema bajo las restricciones extremas de las Zonas No Interconectadas de Colombia.
+
+\subsection{Objetivos espec\'ificos}
+
+\begin{enumerate}[start=0]
+\item \textbf{Observabilidad como primera capa de inteligencia.} Implementar un m\'odulo de detecci\'on de anomal\'ias que procese flujos de datos simulados de sensores de microrredes (generaci\'on PV, estado de carga de bater\'ia, demanda, estado de generador di\'esel), con latencia de detecci\'on inferior a 1 hora para fallas cr\'iticas, tasa de falsos positivos inferior al 5\% y tasa de detecci\'on superior al 90\% sobre un conjunto de al menos 20 tipos de falla inyectados. La evaluaci\'on se realizar\'a contra la l\'inea base actual del IPSE (monitoreo telef\'onico) para fundamentar la viabilidad econ\'omica del despliegue de agentes de borde.
+
+\item \textbf{Grafo de conocimiento energ\'etico-contextual.} Construir un grafo de conocimiento con ontolog\'ia energ\'etico-territorial, instanciado para al menos dos perfiles clim\'atico-operacionales representativos de ZNI (alta irradiancia tipo Orinoqu\'ia y alta nubosidad tipo Pac\'ifico), con al menos 100 entidades, 500 relaciones y tiempo de consulta inferior a 100 ms, a partir de fuentes abiertas (IPSE, NSRDB, NASA POWER, datos.gov.co). La extensi\'on con conocimiento territorial y social se realizar\'a de forma contingente a la articulaci\'on institucional lograda durante el programa.
+
+\item \textbf{Predicci\'on con cuantificaci\'on de adaptaci\'on de dominio.} Desarrollar y validar modelos de predicci\'on de generaci\'on renovable y demanda (PatchTST cuantizado, Chronos-Bolt zero-shot) en dos reg\'imenes de datos: entornos abundantes (MAPE objetivo <10\%) y entornos de datos escasos representativos de ZNI (MAPE objetivo <15\% en alta irradiancia, <25\% en alta nubosidad). Documentar la curva completa de adaptaci\'on de dominio --- MAPE(zero-shot) $\rightarrow$ MAPE(7 d\'ias) $\rightarrow$ MAPE(30 d\'ias) $\rightarrow$ MAPE(365 d\'ias) --- cuantificando expl\'icitamente la degradaci\'on y las estrategias que la mitigan (transferencia de aprendizaje, compresi\'on de modelos, normalizaci\'on por cielo despejado, grafos de conocimiento como sustituto de datos hist\'oricos).
+
+\item \textbf{Arquitectura de agente aut\'onomo con propiedades verificables.} Implementar el agente con seis propiedades verificables mediante pruebas automatizadas: (a) \textit{persistencia} --- 100\% de estados reconstruibles desde el journal de eventos; (b) \textit{regulaci\'on homeost\'atica} --- transici\'on de modo observada en al menos 3 escenarios de estr\'es simulados; (c) \textit{degradaci\'on segura} --- cero estados inseguros en toda la suite de pruebas; (d) \textit{situatedness} --- decisiones de inferencia condicionadas al estado de carga de bater\'ia; (e) \textit{aprendizaje longitudinal} --- MAPE(d\'ia 30) < MAPE(d\'ia 7); y (f) \textit{accountability} --- cualquier decisi\'on reconstruible desde el log de eventos. El agente se desplegar\'a en un prototipo urbano aut\'onomo (Raspberry Pi + panel solar + bater\'ia + carga simulada) operando de forma aislada durante al menos 2 semanas continuas para validar las propiedades en hardware real. La coordinaci\'on de flota mediante aprendizaje federado entre 2+ agentes se evaluar\'a como extensi\'on contingente al cronograma.
+
+\item \textbf{Evaluaci\'on comparativa en simulaci\'on y validaci\'on en hardware.} Ejecutar una estrategia de validaci\'on en cuatro fases: (F-Sim) simulaci\'on con perfiles representativos de al menos 3 zonas clim\'aticas de ZNI usando pymgrid, comparando cuatro configuraciones (sin controlador, controlador basado en reglas, agente con predicci\'on ML, agente con coordinaci\'on de flota) bajo al menos 1.000 escenarios clim\'aticos por configuraci\'on, con significancia estad\'istica (p<0,05) en al menos 3 de 5 m\'etricas (fracci\'on de energ\'ia renovable, ciclos de bater\'ia, consumo di\'esel, energ\'ia no servida, costo operativo); (F-Proto) validaci\'on de las 6 propiedades ag\'enticas en el prototipo urbano aut\'onomo; (F-Industria) exploraci\'on de validaci\'on en modo sombra con un actor del sector energ\'etico, contingente a la articulaci\'on lograda durante el programa; y (F-Comunidad) validaci\'on de pertinencia mediante talleres con actores del ecosistema energ\'etico ZNI (IPSE, operadores, comunidades), contingentes a la articulaci\'on institucional.
+\end{enumerate}
+
+% =========================================================================
+\section{Alcance de la propuesta}
+% =========================================================================
+
+La propuesta se inscribe en el marco de la Maestr\'ia en Inteligencia Artificial (MAIA) de la Universidad de los Andes y se articula con la Misi\'on de Transici\'on Energ\'etica de las PIIOM del Ministerio de Ciencia, Tecnolog\'ia e Innovaci\'on. El programa MAIA provee formaci\'on directamente aplicable al proyecto: MAIA4342 (Sistemas de Decisi\'on y Control Inteligente) cubre control cl\'asico, l\'ogica difusa y teor\'ia de juegos para sistemas multi-agente; MAIA4212 (Aprendizaje por Refuerzo) provee las bases para pol\'iticas de despacho adaptativas; MAIA4332 (NLP Avanzado) habilita la integraci\'on de modelos de lenguaje como razonadores en los agentes aut\'onomos; y MAIA4371 (Web Sem\'antica) fundamenta la construcci\'on de grafos de conocimiento.
+
+El alcance del proyecto comprende:
+
+\subsection*{Alcance t\'ecnico}
+
+Dise\~no, implementaci\'on y validaci\'on en simulaci\'on de un agente aut\'onomo de borde para la gesti\'on de microrredes como infraestructura cr\'itica, con arquitectura edge-first que no depende de conectividad permanente a internet --- requisito cr\'itico dado que m\'as del 67\% de hogares rurales colombianos carece de acceso a internet (DANE, Encuesta Nacional de Calidad de Vida, 2022). La arquitectura es agn\'ostica al dominio: el n\'ucleo del agente (ciclo percibir $\rightarrow$ predecir $\rightarrow$ optimizar $\rightarrow$ actuar), la formulaci\'on de despacho y los protocolos de coordinaci\'on son matem\'aticamente id\'enticos para una planta de 10 MW y una microrred de 100 kW. Lo que var\'ia es el hardware (servidores vs.\ computadores de placa \'unica), la disponibilidad de datos, la conectividad y la complejidad del grafo de conocimiento. Esta separaci\'on entre n\'ucleo invariante y capas de adaptaci\'on habilita la validaci\'on de doble v\'ia.
+
+El prototipo incluir\'a: (i) un m\'odulo de predicci\'on de generaci\'on/demanda con arquitectura h\'ibrida de tres niveles --- PatchTST cuantizado como predictor primario de borde (\textasciitilde500 KB, inferencia estimada <2 ms), LSTM cuantizado como respaldo (\textasciitilde800 KB, <0,5 ms), y modelo fundacional (Chronos-Bolt, 9M par\'ametros) para arranque en fr\'io zero-shot en sitios nuevos --- con normalizaci\'on por cielo despejado (NSRDB/NASA POWER/PVLib), intervalos de predicci\'on conforme, y evaluaci\'on expl\'icita de degradaci\'on MAPE al transferir entre dominios; (ii) un m\'odulo de despacho \'optimo por agente basado en programaci\'on lineal que consume los intervalos de predicci\'on para decisiones conservadoras bajo incertidumbre; (iii) un protocolo de transferencia de conocimiento inter-agente basado en aprendizaje federado por cl\'uster clim\'atico, que opera tanto en conectividad confiable como intermitente; y (iv) un grafo de conocimiento ligero instanciable para diferentes contextos operativos. El m\'odulo de razonamiento del agente interpreta pron\'osticos y anomal\'ias pero no produce predicciones num\'ericas directamente, separando la inferencia estad\'istica (especializada, eficiente) del razonamiento causal (flexible, contextual). Este m\'odulo se implementa como heur\'isticas basadas en reglas (l\'inea base determinista) y, como extensi\'on de investigaci\'on, se evaluar\'a la viabilidad de modelos de lenguaje ternarios (BitNet 1.58-bit) como razonadores de borde. La validaci\'on se realizar\'a en ambiente de simulaci\'on comparando contra controladores basados en reglas convencionales (el est\'andar de facto en controladores comerciales como Victron Cerbo GX), evaluando el rendimiento en dos reg\'imenes: datos abundantes (l\'inea base) y datos escasos de ZNI (evaluaci\'on de transferibilidad). El despliegue de campo constituir\'ia una fase posterior de transferencia tecnol\'ogica.
+
+\subsection*{Alcance geogr\'afico y estrategia de validaci\'on por fases}
+
+La validaci\'on del sistema sigue una progresi\'on de cuatro fases con niveles crecientes de realismo y complejidad:
+
+\textit{Fase 1 --- Simulaci\'on (comprometido, Semestres 1-3):} Evaluaci\'on en simulaci\'on utilizando tres perfiles clim\'atico-operacionales representativos de la diversidad de ZNI colombianas, con datos satelitales de coordenadas reales: (i) \textbf{Perfil Orinoqu\'ia} (alta irradiancia solar, 5,0-5,5 kWh/m\textsuperscript{2}/d\'ia --- referencia: Inirida, Guain\'ia, donde opera la mayor planta solar en ZNI con 2,47 MWp); (ii) \textbf{Perfil Pac\'ifico} (baja irradiancia, 3,0-3,5 kWh/m\textsuperscript{2}/d\'ia, alta nubosidad --- referencia: Coqu\'i, Nuqu\'i, Choc\'o, comunidad energ\'etica con 101 kVA solar + 150 kVA di\'esel + 430 kWh almacenamiento); (iii) \textbf{Perfil Insular} (potencial h\'ibrido e\'olico-solar, 7,0 m/s viento --- referencia: Providencia, programa ``Santa Catalina Verde''). Los datos de irradiancia se obtienen de NSRDB/NASA POWER para las coordenadas de cada sitio de referencia; los perfiles de demanda se generan con RAMP calibrado para comunidades rurales colombianas. La selecci\'on de sitios espec\'ificos para fases posteriores se realizar\'a durante el programa, informada por los resultados de simulaci\'on y las articulaciones institucionales logradas.
+
+\textit{Fase 2 --- Prototipo urbano aut\'onomo (comprometido, Semestres 3-4):} Despliegue de un nodo ag\'entico completo (Raspberry Pi + panel solar 100W + bater\'ia LiFePO4 + carga simulada) operando de forma aislada y aut\'onoma en Bogot\'a durante al menos 2 semanas continuas. Este prototipo valida las 6 propiedades ag\'enticas en hardware real: el agente gestiona su propia energ\'ia, se regula ante variabilidad clim\'atica urbana, persiste sus decisiones, y degrada de forma segura ante condiciones adversas.
+
+\textit{Fase 3 --- Validaci\'on industrial (esperado, Semestre 4 y posterior):} Despliegue en modo sombra (shadow deployment) junto a un controlador existente en una instalaci\'on del sector energ\'etico, donde el agente observa el sistema real, genera recomendaciones, y su desempe\~no se compara contra las decisiones del controlador convencional --- sin intervenir en la operaci\'on. Los actores potenciales incluyen Ecopetrol, Celsia, EPM, microrredes de campus universitario, o instalaciones del IPSE. La articulaci\'on se desarrollar\'a durante el programa mediante la red de TICSw y MAIA.
+
+\textit{Fase 4 --- Despliegue en sitio remoto (futuro, post-tesis):} Implementaci\'on operativa del agente en una microrred en territorio ZNI, con inversi\'on multi-actor (universidad, programas gubernamentales como IPSE/FENOGE, sector productivo, inversionistas externos). Esta fase requiere articulaci\'on institucional, validaci\'on regulatoria y coinversi\'on que exceden el alcance temporal de la maestr\'ia, pero constituyen la ruta natural de transferencia tecnol\'ogica de los resultados de las Fases 1-3.
+
+\subsection*{Alcance temporal}
+
+Cuatro (4) semestres acad\'emicos, ejecutados en paralelo con la carga acad\'emica del programa MAIA --- cuyas asignaturas (MAIA4342 Control Inteligente, MAIA4212 Aprendizaje por Refuerzo, MAIA4332 NLP Avanzado, MAIA4371 Web Sem\'antica) alimentan directamente los componentes del proyecto. Las fases se distribuyen as\'i:
+
+\begin{itemize}
+\item \textbf{F1 --- Fundamentos (Semestre 1):} Revisi\'on sistem\'atica de literatura, construcci\'on del grafo de conocimiento t\'ecnico-energ\'etico a partir de fuentes abiertas, configuraci\'on del entorno de simulaci\'on (pymgrid + NSRDB + RAMP + PVLib), y desarrollo del m\'odulo de detecci\'on de anomal\'ias.
+\item \textbf{F2 --- Modelos (Semestre 2):} Entrenamiento y evaluaci\'on de modelos predictivos (PatchTST, Chronos-Bolt), cuantizaci\'on a TFLite, evaluaci\'on de adaptaci\'on de dominio entre perfiles clim\'aticos, documentaci\'on de la curva de degradaci\'on.
+\item \textbf{F3 --- Agente (Semestre 3):} Integraci\'on de la arquitectura ag\'entica en RPi (persistencia event-sourced, regulaci\'on homeost\'atica, despacho LP, grafo de conocimiento), verificaci\'on de las 6 propiedades mediante pruebas automatizadas, ejecuci\'on de la comparaci\'on de 4 configuraciones en simulaci\'on, montaje del prototipo urbano aut\'onomo.
+\item \textbf{F4 --- Validaci\'on y publicaci\'on (Semestre 4):} Operaci\'on aut\'onoma del prototipo urbano ($\geq$2 semanas), an\'alisis de resultados de simulaci\'on, redacci\'on de art\'iculo y tesis, exploraci\'on de validaci\'on industrial en modo sombra (contingente), talleres de validaci\'on con actores del ecosistema (contingente).
+\end{itemize}
+
+\textbf{Estructura de compromisos:}
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{3cm} >{\raggedright\arraybackslash}p{8.5cm} >{\raggedright\arraybackslash}p{3cm}}
+\toprule
+\textbf{Nivel} & \textbf{Entregables} & \textbf{Estado} \\
+\midrule
+\endhead
+\textbf{Comprometido} & M\'odulo de detecci\'on de anomal\'ias, grafo de conocimiento t\'ecnico (2 perfiles), modelos predictivos con curva de degradaci\'on, agente con 6 propiedades verificadas, prototipo urbano aut\'onomo operando $\geq$2 semanas, comparaci\'on de 4 configuraciones en simulaci\'on (1.000+ escenarios), c\'odigo abierto, tesis & Entrega garantizada \\
+\midrule
+\textbf{Esperado} & Art\'iculo sometido a revista indexada Scopus, ponencia en conferencia internacional, modelos TFLite para 3 perfiles clim\'aticos & Alta confianza, sujeto a cronograma \\
+\midrule
+\textbf{Contingente} & Aprendizaje federado entre 2+ agentes, validaci\'on industrial en modo sombra, extensi\'on social del grafo de conocimiento, talleres con comunidades o actores ZNI & Sujeto a articulaci\'on institucional durante el programa \\
+\midrule
+\textbf{Futuro (post-tesis)} & Despliegue en sitio remoto ZNI, certificaci\'on regulatoria, despliegue a escala de flota, producto comercial u open-source sostenible & Requiere coinversi\'on multi-actor \\
+\bottomrule
+\end{longtable}
+
+\subsection*{Estrategia de acceso a datos --- doble v\'ia}
+
+\textit{V\'ia 1 (datos abundantes):} bases de datos abiertas NSRDB/NREL (resoluci\'on 30 min para coordenadas colombianas), IEEE Distribution Test Systems, Pecan Street Dataport; datos del operador XM (generaci\'on, demanda, precios horarios); y se explorar\'a acceso a datos de Ecopetrol/Celsia/EPM mediante convenio TICSw. \textit{V\'ia 2 (datos escasos):} datos abiertos IPSE (datos.gov.co), irradiancia NSRDB/IDEAM/NASA POWER, perfiles sint\'eticos de demanda (PVLib/RAMP); y se buscar\'a telemetr\'ia del CNM del IPSE. La V\'ia 1 se sustenta en fuentes abiertas de acceso garantizado; la brecha entre V\'ia 1 y V\'ia 2 constituye la medici\'on central de transferibilidad.
+
+\subsection*{Articulaci\'on con la PIIOM}
+
+La propuesta contribuye al objetivo de la Misi\'on de Transici\'on Energ\'etica al desarrollar tecnolog\'ia de inteligencia artificial que habilita la operaci\'on aut\'onoma y eficiente de infraestructura de energ\'ia renovable en los territorios m\'as excluidos del sistema energ\'etico nacional. Los resultados son directamente transferibles a la pol\'itica p\'ublica de comunidades energ\'eticas (Decreto 2236 de 2023) y al programa de electrificaci\'on de ZNI del IPSE.
+
+% =========================================================================
+\section{Lugar de ejecuci\'on}
+% =========================================================================
+
+Universidad de los Andes, Maestr\'ia en Inteligencia Artificial (MAIA), Bogot\'a D.C., Colombia. El programa MAIA se imparte en modalidad virtual (SNIES 116021, Registro Calificado Resoluci\'on 2565 de 2023). La investigaci\'on (desarrollo de software, entrenamiento de modelos, simulaciones) se realizar\'a de forma remota. El prototipo urbano aut\'onomo (Fase 2) se desplegar\'a en Bogot\'a. La validaci\'on industrial en modo sombra (Fase 3) se realizar\'a en las instalaciones del actor que se articule durante el programa. El despliegue en sitio remoto ZNI (Fase 4) constituye una fase posterior de transferencia tecnol\'ogica que requiere coinversi\'on multi-actor.
+
+% =========================================================================
+\section{Resultados esperados y productos I+D+i}
+% =========================================================================
+
+\subsection{Productos resultados de actividades de generaci\'on de nuevo conocimiento}
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{3.5cm} >{\raggedright\arraybackslash}p{9cm} >{\centering\arraybackslash}p{2cm}}
+\toprule
+\textbf{Producto} & \textbf{Descripci\'on} & \textbf{Semestre} \\
+\midrule
+\endhead
+Art\'iculo cient\'ifico & ``Bounded Autonomous Agents for Critical Infrastructure: Domain Adaptation and Agentic Properties in Renewable Microgrid Management'' --- art\'iculo sometido a revista indexada Scopus (target: Applied Energy, Energies, o Applied Intelligence) & Sem 3-4 \\
+\midrule
+Ponencia en conferencia indexada & ``From Simulation to Solar-Powered Prototype: Validating Agent Autonomy on Edge Hardware for Renewable Microgrids'' --- art\'iculo sometido a conferencia internacional (target: IEEE PES General Meeting, AAMAS, o IEEE ANDESCON) & Sem 3-4 \\
+\midrule
+Trabajo de grado (proyecto de capstone) & Documento de trabajo de grado que consolida los resultados de la investigaci\'on: arquitectura de agente aut\'onomo con propiedades verificables, evaluaci\'on de adaptaci\'on de dominio para predicci\'on energ\'etica, y validaci\'on en prototipo urbano aut\'onomo. Incluye defensa ante panel evaluador conforme al formato MAIA (MAIA4401 + MAIA4402) & Sem 4 \\
+\bottomrule
+\end{longtable}
+
+\subsection{Productos resultados de actividades de desarrollo tecnol\'ogico e innovaci\'on}
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{3.5cm} >{\raggedright\arraybackslash}p{9cm} >{\centering\arraybackslash}p{2cm}}
+\toprule
+\textbf{Producto} & \textbf{Descripci\'on} & \textbf{Semestre} \\
+\midrule
+\endhead
+Prototipo de software & Agente aut\'onomo de borde para gesti\'on de microrredes como infraestructura cr\'itica, con arquitectura ag\'entica (persistencia event-sourced, regulaci\'on homeost\'atica, coordinaci\'on federada) desplegable en hardware de borde (Raspberry Pi), publicado como software de c\'odigo abierto (licencia MIT/Apache 2.0) en repositorio GitHub & Sem 3-4 \\
+\midrule
+Prototipo f\'isico & Prototipo urbano aut\'onomo: nodo ag\'entico completo (RPi 5 + panel solar 100W + bater\'ia LiFePO4 + carga simulada) operando de forma aislada y aut\'onoma durante al menos 2 semanas continuas en Bogot\'a, con las 6 propiedades ag\'enticas verificadas en hardware real & Sem 3-4 \\
+\midrule
+Modelo predictivo & Modelos entrenados de predicci\'on de generaci\'on solar y demanda local, calibrados para tres perfiles clim\'aticos representativos de ZNI (Orinoqu\'ia, Pac\'ifico, Insular), exportados a TensorFlow Lite para ejecuci\'on en borde, con curva de adaptaci\'on de dominio documentada & Sem 2-3 \\
+\midrule
+Grafo de conocimiento & Grafo de conocimiento energ\'etico-contextual instanciado para al menos dos perfiles clim\'atico-operacionales, implementado en formato ligero (SQLite + extensiones de grafos), con al menos 100 entidades y 500 relaciones, disponible para investigaci\'on posterior & Sem 1-2 \\
+\bottomrule
+\end{longtable}
+
+\subsection{Productos resultados de actividades de apropiaci\'on social del conocimiento y divulgaci\'on p\'ublica de la ciencia}
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{3.5cm} >{\raggedright\arraybackslash}p{9cm} >{\centering\arraybackslash}p{2cm}}
+\toprule
+\textbf{Producto} & \textbf{Descripci\'on} & \textbf{Semestre} \\
+\midrule
+\endhead
+Talleres de validaci\'on & Al menos 1 taller de validaci\'on con actores del ecosistema energ\'etico ZNI (IPSE, operadores, comunidades, sector productivo) para evaluar la pertinencia del sistema y retroalimentar el dise\~no. Modalidad preferente presencial; virtual/h\'ibrida como alternativa. La articulaci\'on con comunidades espec\'ificas se desarrollar\'a durante el programa y depender\'a de las redes institucionales establecidas & Sem 3-4 \\
+\midrule
+Ponencia de divulgaci\'on & Presentaci\'on oral de resultados en congreso nacional (target: Congreso Colombiano de Ingenier\'ia El\'ectrica o Encuentro Nacional de Investigaci\'on de Uniandes) --- diferente de la ponencia indexada en Secci\'on 1 & Sem 4 \\
+\midrule
+Publicaci\'on de divulgaci\'on & Art\'iculo de divulgaci\'on en medios de comunicaci\'on cient\'ifica colombiana (portal institucional de Uniandes, Pesquisa Javeriana, o medios de Minciencias) & Sem 4 \\
+\bottomrule
+\end{longtable}
+
+\subsection{Productos de actividades relacionadas con la formaci\'on de recurso humano para CTeI}
+
+\begin{longtable}{>{\raggedright\arraybackslash}p{3.5cm} >{\raggedright\arraybackslash}p{9cm} >{\centering\arraybackslash}p{2cm}}
+\toprule
+\textbf{Producto} & \textbf{Descripci\'on} & \textbf{Semestre} \\
+\midrule
+\endhead
+Trabajo de grado & 1 trabajo de grado (proyecto de capstone MAIA) en Inteligencia Artificial & Sem 4 \\
+\midrule
+Documentaci\'on t\'ecnica & Documentaci\'on completa del sistema (gu\'ia de despliegue, manual de operaci\'on, especificaci\'on de la arquitectura ag\'entica) publicada en el repositorio open-source, orientada a operadores, investigadores y actores institucionales & Sem 4 \\
+\bottomrule
+\end{longtable}
+
+% =========================================================================
+\clearpage
+\section{Bibliograf\'ia}
+% =========================================================================
+
+\begin{description}[style=nextline, leftmargin=0pt, labelindent=0pt, itemsep=6pt]
+\tolerance=1000
+\emergencystretch=3em
+
+\item[Ansari et al. (2024)]
+Ansari, A. F., et al. (2024). Chronos: Learning the Language of Time Series. \textit{arXiv:2403.07815}. \url{https://arxiv.org/abs/2403.07815}
+
+\item[Bodewes et al. (2024)]
+Bodewes, W., de Hoog, J., Ratnam, E. L., \& Halgamuge, S. (2024). Exploring the Intersection of Artificial Intelligence and Microgrids in Developing Economies: A Review of Practical Applications. \textit{Current Sustainable/Renewable Energy Reports}, 11, 10--23. \url{https://doi.org/10.1007/s40518-024-00233-w}
+
+\item[Beutel et al. (2020)]
+Beutel, D. J., et al. (2020). Flower: A Friendly Federated Learning Framework. \textit{arXiv:2007.14390}. \url{https://arxiv.org/abs/2007.14390}
+
+\item[Chac\'on-Chamorro et al. (2025)]
+Chac\'on-Chamorro, M., Giraldo, L. F., Quijano, N., Vargas-Panesso, V., Gonz\'alez, C., Pinz\'on, J. S., Manrique, R., R\'ios, M., Fonseca, Y., G\'omez-Barrera, D., \& Perdomo-P\'erez, M. (2025). Cooperative Resilience in Artificial Intelligence Multiagent Systems. \textit{IEEE Transactions on Artificial Intelligence}, 6(12), 3430--3440. \url{https://doi.org/10.1109/TAI.2025.3567371}
+
+\item[Chac\'on-Chamorro et al. (2026)]
+Chac\'on-Chamorro, M., Giraldo, L. F., \& Quijano, N. (2026). Learning Reward Functions for Cooperative Resilience in Multi-Agent Systems. \textit{arXiv:2601.22292}. \url{https://arxiv.org/abs/2601.22292}
+
+\item[Colmenares-Quintero et al. (2023)]
+Colmenares-Quintero, R. F., et al. (2023). A Data-Driven Architecture for Smart Renewable Energy Microgrids in Non-Interconnected Zones: A Colombian Case Study. \textit{Energies}, 16(23), 7900. \url{https://doi.org/10.3390/en16237900}
+
+\item[CREG (2025)]
+CREG. (2025). Resoluci\'on 101\,072 de 2025 --- Regulaci\'on del modelo de comunidades energ\'eticas. Comisi\'on de Regulaci\'on de Energ\'ia y Gas. Bogot\'a.
+
+\item[DANE (2023)]
+DANE. (2023). Censo Nacional de Poblaci\'on y Vivienda --- Indicadores territoriales de pobreza multidimensional.
+
+\item[Ecopetrol (2026)]
+Ecopetrol. (2026). Resultados financieros cuarto trimestre 2025. Recuperado de: \url{https://www.ecopetrol.com.co/wps/portal/Home/es/noticias/detalle/resultados-2025-cuarto-trimestre}
+
+\item[El Espectador (2025)]
+El Espectador. (2025). Las fallas de la comunidad energ\'etica que prometi\'o energ\'ia 24 horas en Bah\'ia M\'alaga. Recuperado de: \url{https://www.elespectador.com/ambiente/las-fallas-de-la-comunidad-energetica-que-prometio-energia-24-horas-en-bahia-malaga/}
+
+\item[Eslami \& Yu (2026)]
+Eslami, A., \& Yu, J. (2026). A Control-Theoretic Foundation for Agentic Systems. \textit{arXiv:2603.10779}. \url{https://arxiv.org/abs/2603.10779}
+
+\item[Fran\c{c}ois-Lavet et al. (2018)]
+Fran\c{c}ois-Lavet, V., Henderson, P., Islam, R., Bellemare, M. G., \& Pineau, J. (2018). An Introduction to Deep Reinforcement Learning. \textit{Foundations and Trends in Machine Learning}, 11(3-4), 219--354.
+
+\item[Ceron et al. (2025)]
+Ceron, J. A., G\'omez-Luna, E., \& V\'asquez, J. C. (2025). Driving the Energy Transition in Colombia for Off-Grid Regions: Microgrids and Non-Conventional Renewable Energy Sources. \textit{Energies}, 18(4), 1010. \url{https://doi.org/10.3390/en18041010}
+
+\item[Gao et al. (2024)]
+Gao, Y., Hu, Z., Shi, S., Chen, W.-A., \& Liu, M. (2024). Adversarial discriminative domain adaptation for solar radiation prediction: A cross-regional study for zero-label transfer learning in Japan. \textit{Applied Energy}, 359, 122685. \url{https://doi.org/10.1016/j.apenergy.2024.122685}
+
+\item[Wang et al. (2021)]
+Wang, J., Wang, X., Ma, C., \& Kou, L. (2021). A survey on the development status and application prospects of knowledge graph in smart grids. \textit{IET Generation, Transmission \& Distribution}, 15(3), 383--407. \url{https://doi.org/10.1049/gtd2.12040}
+
+\item[Hogan et al. (2021)]
+Hogan, A., Blomqvist, E., Cochez, M., et al. (2021). Knowledge Graphs. \textit{ACM Computing Surveys}, 54(4), 1--37. \url{https://doi.org/10.1145/3447772}
+
+\item[Chun et al. (2020)]
+Chun, S., Jung, J., Jin, X., Seo, S., \& Lee, K.-H. (2020). Designing an integrated knowledge graph for smart energy services. \textit{The Journal of Supercomputing}, 76, 8058--8085. \url{https://doi.org/10.1007/s11227-018-2672-3}
+
+\item[Portafolio (2023)]
+Portafolio. (2023, 3 de junio). Amazonas: el proyecto solar que a\'un no entra en funcionamiento. \textit{Portafolio}. \url{https://www.portafolio.co/economia/infraestructura/amazonas-el-proyecto-solar-que-aun-no-entra-en-funcionamiento-583834}
+
+\item[El Tiempo (2025)]
+El Tiempo. (2025, 4 de junio). A juicio Carlos Arturo Rodr\'iguez, exgobernador de Amazonas, por irregularidades en proyecto solar. \textit{El Tiempo}. \url{https://www.eltiempo.com/justicia/cortes/a-juicio-carlos-arturo-rodriguez-exgobernador-de-amazonas-acusado-por-la-corte-por-presunta-corrupcion-3460386}
+
+\item[Vor\'agine (2024)]
+Vor\'agine. (2024, 2 de junio). Gobierno Petro: contrato en La Guajira, paneles solares que no llegaron. \textit{Vor\'agine}. \url{https://voragine.co/historias/investigacion/gobierno-petro-contrato-en-la-guajira-paneles-solares-que-no-llegaron/}
+
+\item[Ram\'irez (2025)]
+Ram\'irez, D. [Director IPSE]. (2025, 13 de mayo). Columna del Director: Inteligencia Artificial y Energ\'ias Renovables: Una Oportunidad para las Zonas No Interconectadas de Colombia. \textit{IPSE}. \url{https://ipse.gov.co/blog/2025/05/12/inteligencia-artificial-y-energias-renovables/}
+
+\item[IPSE (2025)]
+IPSE. (2025). 11 municipios se suman al sistema de medici\'on de energ\'ia del Centro Nacional de Monitoreo. Recuperado de: \url{https://ipse.gov.co/blog/2025/03/04/11-municipios-se-suman/}
+
+\item[Jacob et al. (2018)]
+Jacob, B., et al. (2018). Quantization and Training of Neural Networks for Efficient Integer-Arithmetic-Only Inference. \textit{Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}, 2704--2713. \url{https://arxiv.org/abs/1712.05877}
+
+\item[Altin et al. (2023)]
+Altin, N., Eyimaya, S. E., \& Nasiri, A. (2023). Multi-Agent-Based Controller for Microgrids: An Overview and Case Study. \textit{Energies}, 16(5), 2445. \url{https://doi.org/10.3390/en16052445}
+
+\item[Huang et al. (2025)]
+Huang, J., Zhou, S., Li, G., \& Shen, Q. (2025). Real-time monitoring and optimization methods for user-side energy management based on edge computing. \textit{Scientific Reports}, 15, 24890. \url{https://doi.org/10.1038/s41598-025-07592-4}
+
+\item[Zhang, Y. et al. (2025)]
+Zhang, Y., Saber, A. M., Youssef, A., \& Kundur, D. (2025). Grid-Agent: An LLM-Powered Multi-Agent System for Power Grid Control. \textit{arXiv:2508.05702}. \url{https://arxiv.org/abs/2508.05702}
+
+\item[Zhang, C. et al. (2026)]
+Zhang, C., Zhang, J., Lu, J., \& Zhao, Y. (2026). Large Language Models Meet Energy Systems: Opportunities, Challenges, and Future Perspectives. \textit{Applied Energy}, 403, 127076. \url{https://doi.org/10.1016/j.apenergy.2025.127076}
+
+\item[Wu, Y. et al. (2026)]
+Wu, Y., Chiu, W.-Y., Tsai, Y.-P., Liu, S., \& Hua, W. (2026). Multiagent Reinforcement Learning in Enhancing Resilience of Microgrids under Extreme Weather Events. \textit{Expert Systems with Applications}, 267, 129145. \url{https://doi.org/10.1016/j.eswa.2025.129145}
+
+\item[Ma et al. (2024)]
+Ma, S., Wang, H., Ma, L., et al. (2024). The Era of 1-bit LLMs: All Large Language Models are in 1.58 Bits. \textit{arXiv:2402.17764}. \url{https://arxiv.org/abs/2402.17764}
+
+\item[Mahela et al. (2022)]
+Mahela, O. P., et al. (2022). Comprehensive Overview of Multi-agent Systems for Controlling Smart Grids. \textit{CSEE Journal of Power and Energy Systems}, 8(1), 115--131. \url{https://doi.org/10.17775/CSEEJPES.2020.03390}
+
+\item[Manrique et al. (2018)]
+Manrique, R., Grevisse, C., Marino, O., \& Rothkugel, S. (2018). Knowledge Graph-Based Core Concept Identification in Learning Resources. \textit{Joint International Semantic Technology Conference (JIST 2018)}, 36--51. \url{https://doi.org/10.1007/978-3-030-04284-4_3}
+
+\item[Mazzola et al. (2017)]
+Mazzola, S., et al. (2017). Assessing the value of forecast-based dispatch in the operation of off-grid rural microgrids. \textit{Renewable Energy}, 108, 116--125. \url{https://doi.org/10.1016/j.renene.2017.02.040}
+
+\item[Mei et al. (2025)]
+Mei, K., et al. (2025). AIOS: LLM Agent Operating System. \textit{COLM 2025}. \url{https://arxiv.org/abs/2403.16971}
+
+\item[Minciencias (2024)]
+Ministerio de Ciencia, Tecnolog\'ia e Innovaci\'on. (2024). Pol\'iticas de Investigaci\'on e Innovaci\'on Orientadas por Misiones (PIIOM): Resoluci\'on 1452 de 2024. Bogot\'a: Minciencias.
+
+\item[Mineault et al. (2024)]
+Mineault, P., et al. (2024). NeuroAI for AI Safety: An Agenda for Neuroscience and AI. \textit{arXiv:2411.18526}. \url{https://arxiv.org/abs/2411.18526}
+
+\item[Mosquera et al. (2024)]
+Mosquera, M., Pinz\'on, J. S., R\'ios, M., Fonseca, Y., Giraldo, L. F., Quijano, N., \& Manrique, R. (2024). Can LLM-Augmented autonomous agents cooperate? An evaluation of their cooperative capabilities through Melting Pot. \textit{arXiv:2403.11381}. \url{https://arxiv.org/abs/2403.11381}
+
+\item[Muszynski et al. (2025)]
+Muszynski, J., et al. (2025). EnergyTwin: A Multi-Agent System for Simulating and Coordinating Energy Microgrids. \textit{arXiv:2511.20590}. \url{https://arxiv.org/abs/2511.20590}
+
+\item[Nie et al. (2023)]
+Nie, Y., et al. (2023). A Time Series is Worth 64 Words: Long-term Forecasting with Transformers (PatchTST). \textit{ICLR 2023}. \url{https://arxiv.org/abs/2211.14730}
+
+\item[Paletta et al. (2024)]
+Paletta, Q., Nie, Y., Saint-Drenan, Y.-M., \& Le Saux, B. (2024). Improving cross-site generalisability of vision-based solar forecasting models with physics-informed transfer learning. \textit{Energy Conversion and Management}, 309, 118398. \url{https://doi.org/10.1016/j.enconman.2024.118398}
+
+\item[NREL (2018)]
+NREL. (2018). Phase I Microgrid Cost Study --- Data Collection and Analysis of Microgrid Cost in the United States. \textit{NREL/TP-5D00-67821}. \url{https://docs.nrel.gov/docs/fy19osti/67821.pdf}
+
+\item[OCDE (2023)]
+OCDE. (2023). Distributed renewable energy in Colombia. \textit{OECD Environment Working Paper No. 213}. \url{https://doi.org/10.1787/deda64ff-en}
+
+\item[Olfati-Saber et al. (2007)]
+Olfati-Saber, R., Fax, J. A., \& Murray, R. M. (2007). Consensus and Cooperation in Networked Multi-Agent Systems. \textit{Proceedings of the IEEE}, 95(1), 215--233.
+
+\item[Pan \& Yang (2010)]
+Pan, S. J., \& Yang, Q. (2010). A Survey on Transfer Learning. \textit{IEEE Transactions on Knowledge and Data Engineering}, 22(10), 1345--1359. \url{https://doi.org/10.1109/TKDE.2009.191}
+
+\item[Park et al. (2025)]
+Park, J., et al. (2025). Revisiting LLMs as Zero-Shot Time-Series Forecasters: Small Noise Can Break Large Models. \textit{Proceedings of the 63rd Annual Meeting of the Association for Computational Linguistics (ACL 2025)}.
+
+\item[PNNL (2023)]
+PNNL. (2023). VOLTTRON\texttrademark{} Agent Execution Platform for Electric Power System. Pacific Northwest National Laboratory. \url{https://www.pnnl.gov/available-technologies/volttrontm-agent-execution-platform-electric-power-system}
+
+\item[Rep\'ublica de Colombia (2021)]
+Rep\'ublica de Colombia. (2021). Ley 2099 de 2021 --- Por medio de la cual se dictan disposiciones para la transici\'on energ\'etica. \textit{Diario Oficial}.
+
+\item[Rep\'ublica de Colombia (2022a)]
+Rep\'ublica de Colombia. (2022). Documento CONPES 4075 --- Pol\'itica de Transici\'on Energ\'etica. Departamento Nacional de Planeaci\'on.
+
+\item[Rep\'ublica de Colombia (2023c)]
+Rep\'ublica de Colombia. (2023). Documento CONPES 4129 --- Pol\'itica Nacional de Reindustrializaci\'on. Departamento Nacional de Planeaci\'on.
+
+\item[Rep\'ublica de Colombia (2023a)]
+Rep\'ublica de Colombia. (2023). Decreto 2236 de 2023 --- Por el cual se reglamentan las Comunidades Energ\'eticas. \textit{Diario Oficial}.
+
+\item[Rep\'ublica de Colombia (2023b)]
+Rep\'ublica de Colombia. (2023). Ley 2294 de 2023 --- Plan Nacional de Desarrollo 2022-2026 ``Colombia Potencia Mundial de la Vida''. \textit{Diario Oficial}.
+
+\item[Siemens-Stiftung (2023)]
+Siemens-Stiftung. (2023). Non-Interconnected Zones in Colombia: A Hidden Natural Paradise Where Renewable Energy Systems Face Threats from Fossil Fuels, Isolation, and Corruption. Recuperado de: \url{https://empowering-people-network.siemens-stiftung.org/non-interconnected-zones-in-colombia-a-hidden-natural-paradise-where-renewable-energy-systems-face-threats-from-fossil-fuels-isolation-and-corruption/}
+
+\item[Wang et al. (2019)]
+Wang, H., Lei, Z., Zhang, X., Zhou, B., \& Peng, J. (2019). A review of deep learning for renewable energy forecasting. \textit{Energy Conversion and Management}, 198, 111799.
+
+\item[Sarmas et al. (2022)]
+Sarmas, E., Dimitropoulos, N., Marinakis, V., Mylona, Z., \& Doukas, H. (2022). Transfer learning strategies for solar power forecasting under data scarcity. \textit{Scientific Reports}, 12, 14643. \url{https://doi.org/10.1038/s41598-022-18516-x}
+
+\item[Wooldridge (2009)]
+Wooldridge, M. (2009). \textit{An Introduction to MultiAgent Systems} (2nd ed.). John Wiley \& Sons.
+
+\item[Jin et al. (2025)]
+Jin, H., Kim, K., \& Kwon, J. (2025). GridMind: LLMs-Powered Agents for Power System Analysis and Operations. \textit{SC'25 Workshops}. \url{https://doi.org/10.1145/3731599.3767409}
+
+\item[Ye et al. (2021)]
+Ye, Y., et al. (2021). A Scalable Privacy-Preserving Multi-Agent Deep Reinforcement Learning Approach for Large-Scale Peer-to-Peer Transactive Energy Trading. \textit{IEEE Transactions on Smart Grid}, 12(6), 5185--5200. \url{https://doi.org/10.1109/TSG.2021.3103917}
+
+\item[Zhang, K. et al. (2021)]
+Zhang, K., Yang, Z., \& Ba\c{s}ar, T. (2021). Multi-Agent Reinforcement Learning: A Selective Overview of Theories and Algorithms. \textit{Handbook of Reinforcement Learning and Control}, 321--384.
+
+\item[Yang et al. (2025)]
+Yang, T., Xu, Z., Ji, S., Liu, G., Li, X., \& Kong, H. (2025). Cooperative optimal dispatch of multi-microgrids for low carbon economy based on personalized federated reinforcement learning. \textit{Applied Energy}, 378(A), 124641. \url{https://doi.org/10.1016/j.apenergy.2024.124641}
+
+\item[Liu et al. (2023)]
+Liu, Z., Li, L., Fu, L., Li, J., Sun, T., \& Wang, X. (2023). Knowledge Graph for Low Carbon Power and Energy Systems. \textit{Energy Proceedings}, 2023. \url{https://doi.org/10.46855/energy-proceedings-10361}
+
+\item[DANE (2022)]
+DANE. (2023). Encuesta Nacional de Calidad de Vida (ECV) 2022 --- Indicadores b\'asicos de TIC en hogares. Bolet\'in T\'ecnico. Recuperado de: \url{https://www.dane.gov.co/index.php/estadisticas-por-tema/tecnologia-e-innovacion/tecnologias-de-la-informacion-y-las-comunicaciones-tic/indicadores-basicos-de-tic-en-hogares}
+
+\item[Das et al. (2024)]
+Das, A., Kong, W., Sen, R., \& Zhou, Y. (2024). A decoder-only foundation model for time-series forecasting. \textit{Proceedings of the 41st International Conference on Machine Learning (ICML)}, PMLR 235, 10148--10167. \url{https://arxiv.org/abs/2310.10688}
+
+\item[Gruver et al. (2023)]
+Gruver, N., Finzi, M., Qiu, S., \& Wilson, A. G. (2023). Large Language Models Are Zero-Shot Time Series Forecasters. \textit{Advances in Neural Information Processing Systems 36 (NeurIPS 2023)}. \url{https://arxiv.org/abs/2310.07820}
+
+\item[Liu, C. et al. (2025)]
+Liu, C., Aksu, T., Liu, J., Liu, X., Yan, H., Pham, Q., Savarese, S., Sahoo, D., Xiong, C., \& Li, J. (2025). Moirai 2.0: When Less Is More for Time Series Forecasting. \textit{arXiv:2511.11698}. \url{https://arxiv.org/abs/2511.11698}
+
+\item[Ma et al. (2025)]
+Ma, S., Huang, S., et al. (2025). BitNet b1.58 2B4T Technical Report. \textit{arXiv:2504.12285}. \url{https://arxiv.org/abs/2504.12285}
+
+\item[Microgrid Knowledge (2025)]
+Microgrid Knowledge. (2025). Beyond SCADA: Managing Operational Complexity in the Data Center Era. Recuperado de: \url{https://www.microgridknowledge.com/infrastructure/controllers-amp-software/article/55337655/beyond-scada-managing-operational-complexity-in-the-data-center-era}
+
+\item[MinEnerg\'ia (2024)]
+MinEnerg\'ia. (2024). MinEnerg\'ia y FENOGE abren proceso de contrataci\'on para la implementaci\'on de 500 Comunidades Energ\'eticas en Colombia. Ministerio de Minas y Energ\'ia. Recuperado de: \url{https://www.minenergia.gov.co/es/comunidades-energeticas/}
+
+\item[Mishra et al. (2025)]
+Mishra, A., Ravindra, T., Iyengar, S., Kalyanaraman, S., \& Kumaraguru, P. (2025). SPIRIT: Short-term Prediction of solar IRradIance for zero-shot Transfer learning using Foundation Models. \textit{arXiv:2502.10307}. \url{https://arxiv.org/abs/2502.10307}
+
+\item[Ouedraogo et al. (2021)]
+Ouedraogo, S., Faggianelli, G. A., Pigelet, G., Notton, G., \& Duchaud, J. L. (2021). Performances of energy management strategies for a Photovoltaic/Battery microgrid considering battery degradation. \textit{Solar Energy}, 230, 654--665. \url{https://doi.org/10.1016/j.solener.2021.10.067}
+
+\item[Parlamento Europeo (2024)]
+Parlamento Europeo y Consejo de la Uni\'on Europea. (2024). Reglamento (UE) 2024/1689 por el que se establecen normas armonizadas en materia de inteligencia artificial (Ley de Inteligencia Artificial). \textit{Diario Oficial de la Uni\'on Europea}, L series. \url{https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng}
+
+\item[Pinter et al. (2025)]
+Pinter, J., Beichter, M., Mikut, R., Zahn, F., \& Hagenmeyer, V. (2025). Averaging favors MPC: How typical evaluation setups overstate MPC performance for residential battery scheduling. \textit{arXiv:2510.25373}. \url{https://arxiv.org/abs/2510.25373}
+
+\item[Smith (1980)]
+Smith, R. G. (1980). The Contract Net Protocol: High-Level Communication and Control in a Distributed Problem Solver. \textit{IEEE Transactions on Computers}, C-29(12), 1104--1113. \url{https://doi.org/10.1109/TC.1980.1675516}
+
+\item[Wen \& Chen (2025)]
+Wen, Y. \& Chen, X. (2025). X-GridAgent: An LLM-Powered Agentic AI System for Assisting Power Grid Analysis. \textit{arXiv:2512.20789}. \url{https://arxiv.org/abs/2512.20789}
+
+\item[WHO (2023)]
+WHO. (2023). Household air pollution and health --- Fact sheet. World Health Organization. Recuperado de: \url{https://www.who.int/news-room/fact-sheets/detail/household-air-pollution-and-health}
+
+\item[Xendee (2024)]
+Xendee Corporation. (2024). Xendee's Adaptive Microgrid Control Technology Achieves 79.4\% Operational Cost Savings. \textit{Business Wire}. Recuperado de: \url{https://www.businesswire.com/news/home/20240723669119/en/Xendees-Adaptive-Microgrid-Control-Technology-Achieves-79.4-Operational-Cost-Savings}
+
+\end{description}
+
+\end{document}
